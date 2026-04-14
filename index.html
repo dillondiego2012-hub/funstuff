@@ -8,120 +8,249 @@
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       color: white;
       min-height: 100vh;
       text-align: center;
-      background: url('data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACfAT4DASIAAhEBAxEB/8QAGQABAQEBAQEAAAAAAAAAAAAAAwIABAEI/8QARxAAAAMEBgUIBgcIAwEBAAAAAQIDABESEwQhIiMxMjNBQlFhFENSYnGBkfBTY3KCobEkc5KiwdHhBYOTssLS4vE0o/JEw//EABkBAQEBAQEBAAAAAAAAAAAAAAACAwEFBP/EABkRAQEBAAMAAAAAAAAAAAAAAAACEgEDIv/aAAwDAQACEQMRAD8A+X10ZS6iV3nMSwcpi1G2ThUIcQaYNH52m6KLRlVUV5VFUUloRnPAa6TiABPVgDxc8aq25y85e/5N7z1KUs2QlTr3rZOlDZ7nufwe0y7lRX2farfq7viG9qpCk1ZRWUmnM6GUnVLwYxUmfmkkk1Jhy83aN1S/pWxxc0ql0ie91u9smsqlorv9394r8o8Qra5CUlRWb7FjSmqeV+y4Be3E0FupQ1GkykrxRQhekU1HMBqylrcYR1jX3NzFM1KGvlJSUtPoZoC9F7GNIZZX0PlU2jZ4IJl5liidu4sZjKq/dJ4WQZDF9LeecvneximJKcnKvE0+ntt006gq0bSpJ3hI4CHKaAoliA1WXEPkZxqm5imSSWTVvPsFN8Bzd7Y3/X71jz+LQzoJcGoxZXO82XJ3CyUeVzuj24MzCxj2OlJVGjBR6VRaSqFJTtqWCllGA1mAXi/B9YEdhXi3PCyCZVXSq7EHgVxS9wAAdwN4Yyv1lvz54MZvDSlbzR9T566vPd5KVvOcbwoylk7qbLPbIeKEzjZahe7sEG8Lg3GdOijkSkqKTfpFkhCQFNE979eqrUOOpplJXd6nkjgr1bNQYjqadKt9nYL0eDdF0qsokkrMUzzzxFsgUdTccSajKqzFUkpacBloKzSixOCLg8QB47wY6ZRlaKtKV0n5lq+beLH9VLy9L7vb+GLQZWbLm82SAns+RYpUq+TSVu7G3ZsiV4fBtF9Xk+faDMZOjciIql/yJ5iKEjJDDCEEIPjHnHi5wWN7IsgkqsmlRZkyCNaMkMJoXmwEbABW+qp9VTU640yaT1ZPP4NomxitSiUpipSmWb58W6Ez6RVLoGJbIU1kcYXhViPEG54ldK1GPNRTSu/Ltfcx9EpM3R9G+kXSinoD2S7VZjBXqfrqFga0zXMpraMUs1b6xssTRyvR/YaSyvPwailmy0kklFFMnS7ClD4MaNDNWUlXado9s/3X7QtlC+fPmtpMWV5yN0LUiaFHTlJy0ycIj7QxnAAEzxe5+AOB9TGznMZvWU5Up6jpeychCHExSPcMNddWHc2pCcpJAPSEjqUKay9wVBkF4DUNdYVb+tAlxZEQlInUVSmJ2iExsGhzVaw3MlDBNW6VlppqHLGuoQTGJXXC7VW8d7mNQiXLJSSsy3BH07VVTGizFVSR0Xn+nAfAW526Vi8mWUSm6M+SzqwrDNiLAIiocRUxam0vUUlaStKSTmKWj+BYhN4ALOpyVLk6qSsxRRMxzkghlGAwuK/beAAOrF2pvCpKqoqKpUVSXRyFIc5EzQkMNQGOOy+vvbnNi0ppRS815zNSyiqq01XSfkVpUZCmS0qv2On1nuYxDdMlHMlOm0qYon0OkbtfV219gsihZoJq67MeGbpV6nO736m5Tc35jbiaMqVJ90rLTUigTUPEYpdRTCAY4VuDfVqMqkqZ7HQ87mkzNDc/4dbZYxpVKIlRaYolNTpCaZzXhDxJquNmKLgFwh89ljmq/vG1ILzqSUtNQ9ja+LUiZJJZOalMT29k0PVHZHuHVmwYxGYzYpud9HCyG0P1h+mUxqvi6tpl3M2annKTOWLKOUj3uqxwCreViaIW9WTSSSvLJLG3Z+eIsMSV59zqYfhU0wpc7/JE3RSJSqykpKX9epa4xD2vaGNBUKqlzXOW7GTq/NkW5NzUxOwWxmjNBaN9v4DwaUSzVr1WWnHbPmg6ztpjhYxp4Yrem9ayKJypkpWZ1yRdHi4d4YNk0Jt758/kxI0zJMkSSlD9Ymf7RavGv8Wxkr6VNTTTU2z2oCi60YAeIdzSodX0syXYJ7MXHt+LE5Cy0dSv0anpO3GIHD5fixwspTTbr3GKdFHpKVFWm0Gk0iYmuU9FpWjUJA+1YERKOGA6szCilcqKzU004PJXM1O5VSlqRSVaUpTVE4Y1znFSPAhaxrwcHcwxJSf5CfqxQWtvCl82dTSxZEzK6JLnLEHStA7veANJiylr1LyDZP8A7Goxrn1nT6b2NZUVSUs1IkVVukkpikeQhLR7P6NNH0yaSqstOO2eDIXWbrNkTJc5M0ZsmaKGz3Pc/g9rbJjuZXNt0qUmb9JVVmUhSxeRGUI4oFKZ+GAO4O7GBTm0rxpWNfKK6NipJDN0UzJbjPFtZsAhxAO3tcwmbooqsqZey7HQ6wfZwx4MZjJc0l+8tW+5jdUpWTopaech4M+qyLTFpEub2LAMhV1VUU0lVVFJeTqPYzFbrQyyCiSKaqqUtOkZLFk7jQiYo4CDwEHhuFjLNnaW8zxx+9E8dbYymkmqqKTM/nwZFlOVLKUpXk6cy3AQgJlN1SkIDi9lQVMXJZitKoadGlUNPk8w8+ApVFX12z7XBuQxPL3fBqmSrrr+9Vstk6QolHLhtiGVEFBqfvCrH5MbSmH1rYxfPTak/MbWVTSXstNTPtYV2WopCk36yXYjtd0LdMilJfs3lKqSculkuDnzHcYXmJ3kEBFuZH/s2IOH44MlFUSSWTVVoKdJ6ZFDnKU5YXBlcPGoWljSaZRFaNLm3aiiccHV1G+bTFRVVuco9Hj+sMQo+EXwaSmlIt0U5QFQUUVUUUpqi8Z1Koa3iapz3vcOLsatbcZ05YVdK1LKTeaT9z7PntbFLc85nt9HhXvxbR3yauklw6Qm51kzhw1dm5jN41oqqpTJUzIYh/ZGofhraYVUkU1eb2PPc1FPpEvSbeX3exjGmRNRedSU2rZD9UXVDxd3PakyJciUmhpFLCkwIiuxscXhWO4YdbSoVXSzdJbzliPacONb2lNT0qUxjMcX/X/c/wB7Fug1KpSq01WlKKKdM54oLUWvi3pSf/UqlMTTse9DVWHj3MBVOa8xamJyZQ1GVWTlJS7Fu2W2pDmwsg/VuY1iyv3mQ8eTGyxmbG5toY1KW7TLJyU71S7JB0oMRAvVB4n8RYCl51JWWonDAS1Ed73mK4HOB299YY1uFjPJTr3NHTCXLo8UECZSmtC8YhAHnHtfVVgDXTKLKWUvU1E7WgOYxdW+t1ethi0l01JmSnJ+37rBk0JqKis1NOXsbR/Z6TerES5pW7jsR2THLXacFRcMH69beXSS16l0rHyraTMMvYZuiS0efqaojcHj8W8TZOZulVLzP0YajAXxD5Nk5UlSbMUUgsbJSG1mNvq1cXvqcJUyRQnKVk0qDRbyXbInGaMwA8x668AeLnADmv8AaFBVosubdzLZIFAMnCJSHCE4CIGFxweGIPtVtzLKcp0vudTWBSh2/NpKX931+hvY0mVUgt9zadguSKE7iwxV78e/Vg2LizU6iK0GmKUZWXMTPnIcDFNuMUQEQYzK301jZSZbnRe2fof2tMSUnnOUTLGWGGt9e97qu1phVk+rU++yGTVkp3Siadq3snc5/eEYeINakzPS/czNJTyr3Rtaa6qVHpFGeEtcSnOEsH2InWoXlxHDHXqb2imVS0SqiaksxLFmycsJimHcICIcQF2tjSRzOdSaSshkrmbN28kBvtPw3h3NSiaslP0fnN4D4cGNlqUtVVFNK85NR4oE+i9z4e1weDEYyvpWrS/u/wBAD4iDUoolOUlJXdqCOExil/NutBqSua++3QpyZOXKSVVTtEPslVNEOWqzUJKq6+1wQVe5UlXczb2oei/c7UxGKxpLJmvk7tP+n3nOaclrz5qakzSmtBFJQP8Akpk9v9HtTYbemlNRbr7v4tDAqJkryb0LGzAaILWFrWDuLGU0pbRJqe3t+DYpvVNRT3yauklw57UXdu1OaWLQy/VzPScSv+LGUzUoRVKYl6M+3m8G6IElQUSu0xTIY6cs+fhX+mGAmFjNKZUqMtzdIlwxkjsn3leHh+bSslSZNHpKujUiIRSYGw59T3lxDHHZZkVKTRqFSEpasukETjtnKXO8hnBUbAXPeFodpwtwlK3GdEhvv5GlQvOyuk3QoqlJUoySsxOMpydHLXiD93hxq8ROlyNRKammompYTgtKx2Rt7gcFQ9IeLGdIWKldqpKzJidskBiwdXrb2Mxmq9/eZGxUlVVpXOMYpUajG/eNlEJWl8uc/wCYfFoYlais1aar9xMpS+6ABZaG9KlpJTYxblNW7/qaHGNi0m8n8+am9bwppXOsRllGaGg3l6onLIWAhyRTTVRFMIOhDEQ7ADi0pqKzpqSWjt5N3axllfVsZ5IoZVWXNmKKZCbXu/HDiyLF+hp3SmcxCHs23OeWoHmGsK3t7yb6HNm3drYNDFqK92cXYdlrM7miYrKjTdFNu4489mIfxaSl/hp+62Kbz581NRTX11MT+8bixRky0X1m1ktGi1fFjhS9Lt5O3HhqBpT842PP4NUNz/n+DWshV1eR8lmpy85CH2PZHxa1EqCrytVKlXacJ0CLkhUVeYAEtTwK54jWOAMSc27VS/iZbUO8WMuLFmiVVRlej/l1m7qvFpWKqlL5V0LG1ZzAXsF/xFpl3M3m4+rF+bGUrFKNi3WoVJKWkl9IsRngy7xw1ADchTpc7Ml7duGPvcOtzaK+vbzzwY2lUSqX8/kWc1JpUlT0ah7di7OYlYFdweFXEGIqkpZNW7u7ZI4TF8BzB2tRZUnS9JjUTZrRKlzvnd8Xdz2xTK0VaakrLUTPnJ0g2ii3XUwefOZkmykpUpOZHHPtRQwuhcIudrwfxaSp6OardqdCExvB7YySqUyalo7FuzaY2lJSX0qbL69f4NR1H0Pk0shbccwoPPrqfur+ANJbq9a1yqGgUkgWMBEgCaGyAuqEcQe8O5qaPaOZMJk1NNSx94cDcXY7mxk+du5ceQn9L9TTDpObzdLuK3VR6XLB4OUUmRkmIlMWISuEwgICHd2DqaRyppTY6k/tgXhZfm3sZcW6aLRptc5Kj5ra0UNQPx3jh2jXCFbQpdS0rtSYT57NeUQ/FjPklHlSb2lS7dslZtwRdrhPuw4tzlMl/Y2T9a1c9dXjGbQqzlEv8fm0xX3OXeTL53tjFV/iNRU5sxWamnLJtntGtFLCXeNb3bgEWISonKYzN1UilzUUEuTUdNOj+jJnNCDzmEREXi4OHRArDD/m3GSlFFVb1XrHsEKW0Ln4anO8vY41eaVU6f5N43kP7tjOpIYyXrOvHt/rixlK3TSCpK8opVFovJ6OmctiOIqT8CvGs2A+DAU1zKldeP4Q9n5sZvGsyaV3KmKdOMhS/Zr/ACbJmS0X2LcJSb6nY4NSqcoAwvE7GBtp1pw2cBqGvDUIMSyyCqUtJWXeEKfOXXh7LGn6X+78PFmNS6VOvVZlgue1ZISApa9xAAAYzSklvSfd7dbQZJEqkiney7BjkUIpahF4CWoan1g4d/RFgb0pmkv7vz5+LWnJkVP/ABsnYStimaopv1jDKTNSZmqFW8SV5vp2fn2NMNzzbFZUUySXrOn/AGtlDTVlJSUuYfJHF2FbLKKqzFVZiiih7ZznMaM2uIR1tJdD75fxYo6i6vI06DKTTTTOZbISIxhKD7bnmCoHEeLq94sRS+fe/wBMZitjMU6aPRuVUxSVzds5CWTQhWMIb2IxZS3mL/bIU6SqOivLVslnZCGoOL/EK2yaaV5NmKWLEHSq+H6MaTJ1CSkeVUXlCdHUUURIfKY5a3xOGoXCACAWa/HmWKrJo81JROYSMke2WIQs8HgIP4cGpE6U5RVWYnYNBITDNqKasIQ419jHRSJTr1VNNP3vwY0ZO6vWzmos27VS87WDUWaqtNVV9s54tRasOxuraipzf/lUpFspLHHZwxHU3npLr29raZIVUpavsnIchzWPyF7eLJ8lRlKpJzFJZyKZjQiUdwureA1g+oMK3lpMl9DTVmp5zWNojto3a9tNVvL1S86427X5g0on0iXpOpE2MKX1int2a/8AbG0yf9pSZ30akzU3FgmIgnsg8IAEXAAvDGtz9bm5DFbqUCi3fJpmjtx5Zlb4XDWGH5NStCVQImooajnngJ3EMBzFwxLmLjrxY0l4UvJZFJm6SI5ILUBgEQApgGrEONQsSZUpyd7LT6cEUHc9sUnq07zbU88GJjh1iqJQJqhpCFPpIrIuEDVYD5c2NKsS/R27ENrq1/H4NVHNRklk1VUuUJpqWyRwxl1lLrfjXW6pueZ/7Y5l0loyvLOTUWjcoU6BL6NxXjgGDvkwImS5286mX5N6ivKWTV/kb0xUrtKVL2D+12av0YxqRmlc1MmR5Or2sixUpM2apMjyQbMOZ/6a29WSvpSsu72yWtmqsBd4METGZJdze85k/u+DHM0fq2qH/r8/m1SlZ0pJJS8sQbTHB+j0bYxPP9XncyArfpqKJp5ILCZC4FdqCseI1j7TE3EPDGZFDeqaGspkryalMU2LeVjOpUtSVVZc1WZLIUhLBcoYYfPFiZ6HSVaKtNSpMtT/ABh/NvDUn6GnRZSd2oa3BaO/ZMO0DGbyjytKrM9yHvY4dI2KW+vbtPbZ6UlyamUijKpexHmI9xgNULnu7QrYkSZdGr/6bopZ5Q/RZgUJRSYRA64GNUY5CxgV1vHUGNVQtzNaElWmpzlVZSkMZ4IjFLrEoCIPENzwfvBgJvYWoxVEkU5iUuZD7+L6/OplouhU+ky1Njr2Rfb2atWt7ABitUUpHnJnt2YYd2/Nr18K8Uqs66mTE+hwrE3c5soab9Zt9fDV4sUMrImbSMpT3N1d0iOxm4Ohdrxx4N5IVSRmqpXaiZjkjsxlA7hg6VYD4CxUyxaMryPl3NzINmKKGLBrMurSUU6KlRqOmpHzaYTFTCYXV97nA4tQVRMEv95sR2vOpsUyv8M7GkyyiaqV0ql9sm0FkWqbzs28UijsWeEIgNfgHe1UW6WTVSSTpGawchjfa/QWE2LFHRLRVZkyWmpnIe0YvsVdr3j0eLEoWVzvz7sfFsn/APm3jdWYs2SpSkrvYz2qyj8Khbyj0qlUVZTkyqlHmJmIeBQxYinLCYguxAQEQENb2lY82X6skHRaTF0d0p5xr84sWxjqyZTIoSVpUlE1OvEUzakaZRRVVO8t3cOuvVUXs1Mb2NJkiiSSUu90jSpe3vX2ISsajUU0q6Y0dVJGXd0akpqJ+rjtOCs1qutz9Tcp5XN+fgyUddWirTaMqompatkPCaESuGsOAiDdFFpo0ekTlE0z2Jd+iVTB2oQEH1YsaS56QZKcpyaZL2I4Yvec2opkktKxuajTU7pX2/F1fg5qMkURuE1ZaidGUOYhF5ZoTGI4wl7QA5BEAwiDe1ftKgq0FaUqrRhUllPcLkULWUBheURB9dYbIsdKUfLr5voAWF1QYY1AFfHg1lvUZSSaiin8xQKLxx7+5pZ+kzVUpekTl2yHJZMQ3dxaCzUm2lWvVdIe2c9r3jC0mKqlLmpbEZOsxNSpNKb6yxGdqoaXKl06Lymj0eZtrqQpl9odzGpptHL6nR6rVDKvVenkYxyyZedm9E5PtBZ7fybLKq0pa9vFFOpD8mkpJsxVJK7T+yR+DdPKPofJuTUZOxbPBaPaEwGeOut1WyAbhFiXN6rnI/eai3S10ro4bZIs1T+z9G9TpKqUuUqpdxEJbyFF7/mPiLFCxwhipc11oz5fmO4PwbFKlIpE2ZNyEvIYDRA8TVWgcAg6qsQF9Thxiylrr3I7XY2pB0pKctK821D7Rohy1WahCqvDuDjNMNzdTOvYLmiHKPY5pWlTrq8T/wAfzbxlMmkkjpfYsdbe+z8WOZZZNVJZRK7UlxZLRasTFHcxpyud61i1+DYpUpKnpP8AL8nsyBvoh0plGT241CRKREKLiFEAESvfhg90WDDLnKZsVuktGV5ZyHlNHTmWDnnll9K0cBc78mBObJ869lickU5LJupnKJnTCXDDUVznvfrf3a2MsqT58/6ZKGVX/kpf/Ocp9GUxSWqogGoQfvB3i1JlVp1MTS5xQ/VLj8GGQo/Wy/OVtC1GMr6KX7nmtsYzFZemIjCnKUVmzDRkgy5XC99b7Wqp2t9XiakpFRKUneZD2oi78BDHiA9VqTKlzquwbJ0tTTLU0vueQY6qYqkjKm6SGOwXVhXi1UxZVVZOkqpS5hI7BISquMJYutWA173saZtJdTJhICY2DVWqtfbvZJaSq10mpL6Fkxsvd/rwY66TKopIKUaWnymYWXSkD7MJnkcAViIiWt9ULnV1ciicq6lXmfxK8GJlKe5lekbqsqUMldpJJaOK307VXstkSaS9l2Otbs9jeqEVSvdHmyH8S/H4sUxVjQihfRJffz2qvwY1vRXkvYj47TtWpqRJN0UyZaOf2QLFF4APgyGNNRlSryPPVl6PwDxFipkKZtHNSu/OtmRU5tJNNROOMhDkA0WoH/k00g6V3KSlyyZ7URusbd2AxmamxKQoqqsor/JlJ7PRCttAlJTV5VeR5IDWdxnt6c01F4rPghIQh4steGpwd2Pa6GKkiNJVTRlc36PpO6TC+ZW1Gb0mjBjR5FMlzdGzKF5Usor9HTzH1J8XFAPgAMayk2XdJp2ILG1xNxbp/aVLpX7TplIp1JVmKKWz4F953buaSnEUty3QeUmiukGkjzkXu4QfqdardW/VhuNNS5Uupn8pcbTt7GYrU4QspJHnJn3fF/Z49janSp10qoqnZgOckJsoPqePZjqYmsxuaaWWUubGaSlZkRVvJSmfr5rIv+AixNSM2mbQzZkryVtDcsiKkq7VSmJ2uqaKGoz3YALhdw1PexnUtRkFaSKiaUq7IY94uROyBXjCJxCIeAVm1MZvS+kaYVbz1fkG6f2ookr+0qQqkqpSE1FzHjUopETHfXFLIIgTHABcxmKerd3ql3kt5Ndlqo+mUV5VydRMhrZ4rfVqAaxrxq4tlVvoiiV3LjMeOWWI5od+LnbD3N00ijch/aSn7MpNKTlJrltkjlw+lKBgARBwvwKwy4PPl7Ub/P2Org1KSvrOu1UVJWlLSkkpikEcFksRQLEPe4G4nI4Zv7xugQUGhn+gAlLhIc4ENEUzxEA6o4h2AGt4jyw+qZpiUlNL0dsljM9zymHc78d72JyMspJa9vPYUbFMreSldJngsxFiCy7c91TT61qjSvLpSZsMVlVHJNWlTZdjbPCWrZMIi0lupaqaktSychyKWi9bqiDVSk0kllEkqSnSE+mSOE/sxgA+INKhWGVFV9LedPr9Z73vY0y6S99jrtRWRZRKTKSSTzm6yleBTDtObplKxUuame/Z+DSiaUsmrKTU6h8p/aZUzyr1JKYpB0zREUizFc74va6cnRaNTJVFpPLE0+fgMUp98ICDyuwr3PYZReyVEkpktS3ATbc93hW3iKkpZNW8u88Fk3FjT9VpGxj/AMTp2ovy/wBMVk6xVZ01VKXMhPAezGUbQC7cLn1MUq5m/bbKJS0U71O8Tjse061xqZEb2XRkpfQ6MbzVFMPbv/Bigp3qyc1WWntnzQl6TmkuLVD/ABE2QpLnm07yD2e7HU1NJlpnouchJ1qg3uq7uxsivKmJekajJKf8rSJ/5efjuYYtH5gaWjPZgTrTmpKS+pZi1WRHiwlajKqqf0dV/R3NTpqKnRhRUm8pmQR2IYco1mfxd3PaDaGbo/6/NTUilNWlKpKJzD/OsGJROUxo6yqoyZthSkKLmjJIhKkWqE5RDeInsOcEIYvq5JUVve1Jqypd0mp54Nrr1ifgb8mLmW5nRXkef+lzdFC5MKzqSlMo1mM8dohdcNYA+uoBqewvTky+uX8X+e1koyqslSjJKafOSADROe7jrYqpDSJU5SVMlx2JmaHU92tjZFjJc0nd9dxjca3AxsSo3/X5s4sahWRQ3NytH9r3m7KHQ6MrdK05NNQ8Vs8RSkcV4V4W6/s8WlDjLdNljzb1VWYp+TUUnOpXkvP8eL3OY1CX0q7U9g9nxakOig0NWlLJpJJKXlgnRObov3uf8O1qEU6UiKqiiaaiaZZJCJ6VzijhlFzziI4uFpTXVSoalFmqS1DlPBGaGINbnufxENTczSnLpTQVVRUV0ktOM94Uu0ARFAazdgduAC3PdNRU0pLVRaMrSZkqZLTIY5+oUKxxYzyPRXrUZRXRTVP8uzg8WpFNKcmqro9vpVYl7WuOjfSP+RnLIy9LbHsHVrYzQjznOKKeRM7srZEzKUaYooleKRIkPMMUyRgMURhcOLhdXVaHu5S4siJed9H9/F3yFgkzJSkpS10qmp0DkZLxOhHVmUaWufQVGUsmq1PKFe+vwYUTpJLJqqpTE+hl+LErMZJKWrNmdToeRf4N4Ze+UVV0ih49mHjVg0mRVkzX7cHW4j2YePAWyik37uRghumckksSUloDxkmQqFh6IkEHD3h3NzxXPObX2and/wCjdBTK0blEqnaRMxLuMvKCiasoVYOrrhqYZc5ub0eTq9La49vBqMqrdpKXidHyEPaLmeJXbhHc1p0pVJFNJJJO7yHgLFED7T+/4AwFxYOlYislNXksvlER0NkpyxCUSl4AL/BgUPNltiqaP7jdRLpVTlVFTmpxRkUi1ldqEBAQGur3qgcJQYVUpavOZ7Gx/aNXyY0zc6yGSVS/k9k2vDz8mMpdIxWSGvZn+LG1KKTUU/V9BMpYsbVWI8RY071ipkhaOqqumkkkoopZJAQlqIaoXBxqaWcxKMqinKV+kQW04Otsi/dWxGLKY0SmZXz0m6KlVhUSqlxRwE7RjgwKGAO1MKhr778fa1IS01nKTPczfr2NSspjuU73/BnRSot4mqrLUswWIk+MQgLy1bgHuaKKhSacsnRqNRlKRSFLBE0yRGNwKAVmFsBptDTTTSyHMfXlcGrBwOGvjwYrLJqKpC/RzCGJbJFZEHDj88WlNNjMZnUMCYKJppp24c8JjYahdZxw/JjSZRL0nq2kxmorVSRcqpepntusZaujwY2MZWizfoySqdgrozlMaKGvAAxPWG4KrWLCa6WulLyPYbEFMQnKZcHwBm1VbmUaSdRNSiS0hFSHAhYoihCFrNrrB7hGvUDcE0hVRVW8BMM2wRMpTDWOGrcGrUwKJKpopq82pktl1cNTXRimWylIPtg3qeKiF2+A1UHYOPcxlUpTPK+s+77PzaTF0frPu6oWoxU5ODMcKCdMQQUpCyt1UdMpS1g4+vUeEpekDxF2DdQMpUeRy5qnKJlgILuFwvGJ73vcDnd7akGS5YvyZJSjp2oCHUihL0XuB9VT2ygCKCSqSIpvuzHjzm3u1amF7E5UYnNTZfT/ALamMxWQp2pS9GYldp2autD+jE5SW6mf3+amkspvGRJIimJxS7omCDXSzSXFmoREqREBqUmjDDDEQRiiMUo5Q1BX3MKZWlJDKTUU0pSacuK3BaO/pDwafRypn80fsthM+Y69rdb+bPQhooco5VMBxHEg6eruxak5eUVVOSpRuS0dRRTIoc5okuNQ/N7e0cvKaZe6RSxGe1uD5NCNIWemlMGWSOX1X5vFzQmZEqiZlhAC7xJEHg0pyuUreJXkyjxRkzQOx7gYTYt2EpomTSQIiQTEEE0wCyIlF7yjqMBn1v3BxfjoGoyKNKUAgqLEnCQ4RFMV5gD4kN8GJyI3qv5Pw3MLUUBlwzBi2A1+LeFvfPeLUrJJdzzf2y/J7GVRWcmqlpPy2mWjESGjUo6lZi4DMFwdoOr/AFaZwcjky7yYUI7OBYrLnccX6tdTpMvCnlXsr7eU7OsVKSnyZKXdlj6xul53sdMWFYSVEemkQpIEwTqAgAAwhU9xazYmF5heIsaygGWUVKqoPt/FisvPSTfNrL+LUiqqlolZf/r/AE3hygZFNxAJM/CpoLi1KMopNpk1W89wpY+4KmWLly30qnS+ToWJ8Zi1VgQsIC6sR3BXssCpnY2+1soSt2xk8Mfm0qypM0r/AN9upssa+myvP5MJTN1IrLplfyhZ1k8EdVnJ4RA7dW1Ky8MRK8le4dSyaGEeLm8oqvJp90mpMTMS8JFC/aLuGrHtaaSupSFjqrW1FM/za6KqKSoqAkmqoAlgjDIYBKZ7sBwc4XhWLSrIDFbpBGUKatKBVJNRMx0zkTijc8KgeFUQOGuqvFzmNAwPOF29V7jnis+y7fhWxefPwYrJinSk85M+7D/tuiio1zFpidDjKRZciEUBRfWAWQEahEAeD3NzJvvbwak3j1rRavO5oamkyxvWshjISk5iIiZ5nme6LB1Xj4s1FpKQzJ9HmvTsOPDDWDzYYueHe3q/JzndQ3y3AIkWNGIDCD64Q1v7mqVP/9k=') center center / cover fixed;
       overflow-x: hidden;
+      background: #0a0015;
     }
 
-    /* dark overlay so buttons/text stay readable */
-    body::before {
-      content: '';
+    /* ═══════════════════════════════════════
+       GALAXY BACKGROUND
+    ═══════════════════════════════════════ */
+    #galaxy {
       position: fixed;
       inset: 0;
-      background: rgba(5, 0, 20, 0.45);
-      pointer-events: none;
       z-index: 0;
+      overflow: hidden;
     }
 
-    .shooting-star {
-      position: fixed;
-      top: -50px;
-      width: 2px;
-      height: 100px;
-      background: linear-gradient(white, transparent);
-      transform: rotate(45deg);
-      animation: shoot 6s linear infinite;
+    /* Deep space gradient layers */
+    #galaxy::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(80,0,120,0.55) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(0,30,100,0.6) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 40% at 50% 80%, rgba(60,0,80,0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, #0d0025 0%, #020008 100%);
+    }
+
+    /* Nebula color blobs */
+    #galaxy::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 40% 30% at 15% 25%, rgba(140,0,255,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 25% at 85% 60%, rgba(0,80,200,0.2) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 20% at 60% 10%, rgba(200,50,255,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 30% 80%, rgba(80,0,180,0.15) 0%, transparent 70%);
+      animation: nebulaPulse 12s ease-in-out infinite alternate;
+    }
+    @keyframes nebulaPulse {
+      0%   { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    /* Star canvas layers via box-shadow */
+    .star-layer {
+      position: absolute;
+      inset: 0;
       pointer-events: none;
-      z-index: 1;
     }
-    @keyframes shoot {
-      0%   { top: -50px; left: 10%; opacity: 1; }
-      100% { top: 100%;  left: 80%; opacity: 0; }
+    .star-layer::after { content: ''; position: absolute; border-radius: 50%; }
+
+    #stars-sm::after {
+      width: 1px; height: 1px; background: transparent;
+      box-shadow:
+        45px 120px #fff, 110px 34px #fff, 178px 210px #fff, 230px 80px #fff,
+        290px 155px #fff, 350px 40px #fff, 420px 190px #fff, 480px 95px #fff,
+        540px 260px #fff, 600px 15px #fff, 660px 140px #fff, 720px 220px #fff,
+        780px 70px #fff, 840px 180px #fff, 900px 50px #fff, 960px 230px #fff,
+        1020px 110px #fff, 1080px 290px #fff, 1140px 30px #fff, 1200px 160px #fff,
+        1260px 240px #fff, 1320px 85px #fff, 1380px 200px #fff, 60px 340px #fff,
+        130px 420px #fff, 195px 510px #fff, 255px 380px #fff, 315px 460px #fff,
+        375px 540px #fff, 435px 400px #fff, 495px 480px #fff, 555px 360px #fff,
+        615px 440px #fff, 675px 520px #fff, 735px 390px #fff, 795px 470px #fff,
+        855px 550px #fff, 915px 410px #fff, 975px 490px #fff, 1035px 370px #fff,
+        1095px 450px #fff, 1155px 530px #fff, 1215px 420px #fff, 1275px 500px #fff,
+        80px 600px #fff, 150px 680px #fff, 220px 750px #fff, 280px 630px #fff,
+        340px 710px #fff, 400px 790px #fff, 460px 660px #fff, 520px 730px #fff,
+        580px 810px #fff, 640px 670px #fff, 700px 740px #fff, 760px 820px #fff,
+        820px 690px #fff, 880px 760px #fff, 940px 840px #fff, 1000px 700px #fff,
+        1060px 770px #fff, 1120px 850px #fff, 1180px 720px #fff, 1240px 800px #fff,
+        25px 900px #fff, 95px 970px #fff, 165px 920px #fff, 235px 990px #fff,
+        305px 880px #fff, 375px 950px #fff, 445px 910px #fff, 515px 980px #fff,
+        585px 870px #fff, 655px 940px #fff, 725px 1000px #fff, 795px 890px #fff,
+        865px 960px #fff, 935px 930px #fff, 1005px 1010px #fff, 1075px 880px #fff;
+      animation: twinkle1 3s infinite alternate;
+    }
+    @keyframes twinkle1 { from { opacity:0.3; } to { opacity:1; } }
+
+    #stars-md::after {
+      width: 2px; height: 2px; background: transparent;
+      box-shadow:
+        70px 90px rgba(200,220,255,0.9), 200px 170px rgba(220,200,255,0.9),
+        330px 60px rgba(200,220,255,0.9), 460px 140px rgba(255,220,200,0.9),
+        590px 220px rgba(200,220,255,0.9), 720px 100px rgba(220,200,255,0.9),
+        850px 190px rgba(200,220,255,0.9), 980px 75px rgba(255,240,200,0.9),
+        1110px 160px rgba(200,220,255,0.9), 1240px 245px rgba(220,200,255,0.9),
+        140px 330px rgba(200,220,255,0.9), 270px 410px rgba(255,220,200,0.9),
+        400px 280px rgba(200,220,255,0.9), 530px 360px rgba(220,200,255,0.9),
+        660px 430px rgba(200,220,255,0.9), 790px 310px rgba(200,220,255,0.9),
+        920px 390px rgba(255,240,200,0.9), 1050px 470px rgba(200,220,255,0.9),
+        1180px 345px rgba(220,200,255,0.9), 100px 550px rgba(200,220,255,0.9),
+        230px 630px rgba(200,220,255,0.9), 360px 710px rgba(255,220,200,0.9),
+        490px 580px rgba(200,220,255,0.9), 620px 660px rgba(220,200,255,0.9),
+        750px 740px rgba(200,220,255,0.9), 880px 610px rgba(200,220,255,0.9),
+        1010px 690px rgba(255,240,200,0.9), 1140px 770px rgba(200,220,255,0.9);
+      animation: twinkle2 5s infinite alternate;
+    }
+    @keyframes twinkle2 { from { opacity:0.4; } to { opacity:1; } }
+
+    #stars-lg::after {
+      width: 3px; height: 3px; background: transparent;
+      box-shadow:
+        150px 50px rgba(255,255,255,0.95), 400px 130px rgba(200,220,255,0.95),
+        700px 80px rgba(255,240,200,0.95), 1000px 160px rgba(200,220,255,0.95),
+        250px 300px rgba(255,255,255,0.95), 550px 250px rgba(220,200,255,0.95),
+        850px 340px rgba(255,255,255,0.95), 1150px 280px rgba(200,220,255,0.95),
+        350px 500px rgba(255,240,200,0.95), 650px 450px rgba(255,255,255,0.95),
+        950px 530px rgba(200,220,255,0.95), 1250px 480px rgba(255,255,255,0.95),
+        100px 700px rgba(220,200,255,0.95), 450px 720px rgba(255,255,255,0.95),
+        800px 680px rgba(255,240,200,0.95), 1100px 740px rgba(200,220,255,0.95);
+      animation: twinkle3 7s infinite alternate;
+    }
+    @keyframes twinkle3 { from { opacity:0.5; } to { opacity:1; } }
+
+    /* Shooting stars */
+    .shoot {
+      position: absolute;
+      width: 3px;
+      height: 120px;
+      background: linear-gradient(rgba(255,255,255,0.9), transparent);
+      transform: rotate(45deg);
+      border-radius: 2px;
+      animation: shooting linear infinite;
+      opacity: 0;
+    }
+    .shoot:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+    .shoot:nth-child(2) { left: 35%; animation-duration: 10s; animation-delay: 3s; }
+    .shoot:nth-child(3) { left: 60%; animation-duration: 7s; animation-delay: 6s; }
+    .shoot:nth-child(4) { left: 80%; animation-duration: 9s; animation-delay: 1.5s; }
+    @keyframes shooting {
+      0%   { top: -10%; opacity: 0; }
+      5%   { opacity: 1; }
+      40%  { top: 110%; opacity: 0; }
+      100% { top: 110%; opacity: 0; }
     }
 
-    /* ── TOP NAV ── */
+    /* ═══════════════════════════════════════
+       TOP NAV
+    ═══════════════════════════════════════ */
     #top-nav {
       position: relative;
       z-index: 10;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 28px 0;
+      padding: 24px 36px 0;
       width: 100%;
     }
 
     #request-link {
-      font-size: 15px;
-      color: #a8d8f0;
+      font-size: 20px;
+      font-weight: bold;
+      color: #d4aaff;
       text-decoration: none;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 20px;
-      padding: 8px 18px;
+      background: rgba(120,0,255,0.18);
+      border: 2px solid rgba(180,100,255,0.45);
+      border-radius: 30px;
+      padding: 14px 28px;
       transition: 0.25s;
       white-space: nowrap;
+      backdrop-filter: blur(8px);
+      text-shadow: 0 0 10px rgba(180,100,255,0.6);
     }
     #request-link:hover {
-      background: rgba(255,255,255,0.15);
+      background: rgba(120,0,255,0.35);
+      border-color: rgba(200,150,255,0.8);
       color: #fff;
-      box-shadow: 0 0 12px rgba(100,200,255,0.3);
+      box-shadow: 0 0 20px rgba(160,80,255,0.5);
+      transform: scale(1.05);
     }
 
-    #search-wrap { position: relative; }
+    #search-wrap {
+      position: relative;
+    }
     #search-input {
       background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 22px;
+      border: 2px solid rgba(180,100,255,0.45);
+      border-radius: 30px;
       color: #fff;
-      font-size: 15px;
-      padding: 9px 18px 9px 40px;
-      width: 210px;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 14px 24px 14px 52px;
+      width: 280px;
       outline: none;
       transition: 0.3s;
+      backdrop-filter: blur(8px);
     }
-    #search-input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-input::placeholder { color: rgba(255,255,255,0.4); font-weight: normal; }
     #search-input:focus {
-      width: 250px;
-      border-color: rgba(100,200,255,0.6);
+      width: 340px;
+      border-color: rgba(200,150,255,0.8);
       background: rgba(255,255,255,0.12);
-      box-shadow: 0 0 14px rgba(100,200,255,0.2);
+      box-shadow: 0 0 20px rgba(160,80,255,0.4);
     }
     #search-icon {
       position: absolute;
-      left: 13px; top: 50%;
+      left: 18px; top: 50%;
       transform: translateY(-50%);
-      font-size: 15px;
+      font-size: 20px;
       pointer-events: none;
     }
 
-    /* ── HEADER ── */
+    /* ═══════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════ */
     #header {
       position: relative;
       z-index: 10;
-      margin-top: 16px;
+      margin-top: 20px;
     }
-    h1 { font-size: 48px; margin: 0 0 10px; text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
-    #clock { font-size: 40px; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
+    h1 {
+      font-size: 52px;
+      margin: 0 0 10px;
+      text-shadow: 0 0 30px rgba(180,100,255,0.7), 0 2px 8px rgba(0,0,0,0.9);
+    }
+    #clock {
+      font-size: 40px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
+    }
     #game-count {
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 2px;
+      font-size: 14px;
+      color: rgba(200,170,255,0.5);
+      letter-spacing: 3px;
       margin-bottom: 30px;
     }
 
-    /* ── GAMES GRID ── */
+    /* ═══════════════════════════════════════
+       GAMES GRID
+    ═══════════════════════════════════════ */
     .games-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      padding: 0 24px 60px;
+      padding: 0 24px 70px;
       position: relative;
       z-index: 10;
       max-width: 1400px;
@@ -135,25 +264,24 @@
       font-size: 28px;
       border: none;
       border-radius: 15px;
-      background: rgba(30, 41, 59, 0.82);
+      background: #1e293b;
       color: white;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
       transition: 0.3s;
       white-space: nowrap;
-      backdrop-filter: blur(6px);
     }
     .game-btn:hover {
-      background: rgba(51, 65, 85, 0.92);
+      background: #334155;
       transform: scale(1.12);
-      box-shadow: 0 0 30px rgba(255,255,255,0.5);
+      box-shadow: 0 0 30px rgba(255,255,255,0.6);
     }
 
     #no-results {
       display: none;
-      font-size: 22px;
+      font-size: 24px;
       color: rgba(255,255,255,0.4);
-      margin: 60px 0;
+      margin: 70px 0;
       position: relative;
       z-index: 10;
     }
@@ -161,8 +289,18 @@
 </head>
 <body>
 
-  <div class="shooting-star"></div>
+  <!-- GALAXY BACKGROUND -->
+  <div id="galaxy">
+    <div class="star-layer" id="stars-sm"></div>
+    <div class="star-layer" id="stars-md"></div>
+    <div class="star-layer" id="stars-lg"></div>
+    <div class="shoot"></div>
+    <div class="shoot"></div>
+    <div class="shoot"></div>
+    <div class="shoot"></div>
+  </div>
 
+  <!-- TOP NAV -->
   <div id="top-nav">
     <a id="request-link" href="https://docs.google.com/forms/d/e/1FAIpQLScW-1CMnwMleBO94TqVTRkmc8wrvblyNo9sDZ4zTHpFmFDDRg/viewform?usp=publish-editor" target="_blank">
       📬 Request a Game
@@ -173,121 +311,85 @@
     </div>
   </div>
 
+  <!-- HEADER -->
   <div id="header">
-    <h1>🎮 Diegos/Tommys Games</h1>
+    <h1>🎮 Diego/Tommys Games</h1>
     <div id="clock"></div>
     <div id="game-count"></div>
   </div>
 
   <div id="no-results">No games found 🔭</div>
 
+  <!-- GAMES GRID — ABC ORDER -->
   <div class="games-grid">
-    <div class="game-card" data-name="1v1.LOL"><button class="game-btn" onclick="openGame('lol')">1v1.LOL</button></div>
-    <div class="game-card" data-name="3Dash"><button class="game-btn" onclick="openGame('dash3')">3Dash</button></div>
-    <div class="game-card" data-name="A Small World Cup"><button class="game-btn" onclick="openGame('smallworldcup')">A Small World Cup</button></div>
-    <div class="game-card" data-name="Agar.io Lite"><button class="game-btn" onclick="openGame('agario')">Agar.io Lite</button></div>
-    <div class="game-card" data-name="Apes vs Helium"><button class="game-btn" onclick="openGame('apesvshelium')">Apes vs Helium</button></div>
-    <div class="game-card" data-name="Baseball Bros"><button class="game-btn" onclick="openGame('baseballbros')">Baseball Bros</button></div>
-    <div class="game-card" data-name="Basket Bros"><button class="game-btn" onclick="openGame('basketbros')">Basket Bros</button></div>
-    <div class="game-card" data-name="Basketball Stars"><button class="game-btn" onclick="openGame('basketballstars')">Basketball Stars</button></div>
-    <div class="game-card" data-name="Bit Planes"><button class="game-btn" onclick="openGame('bitplanes')">Bit Planes</button></div>
-    <div class="game-card" data-name="BitLife"><button class="game-btn" onclick="openGame('bitlife')">BitLife</button></div>
-    <div class="game-card" data-name="Block Blast"><button class="game-btn" onclick="openGame('blockblast')">Block Blast</button></div>
-    <div class="game-card" data-name="Cluster Rush"><button class="game-btn" onclick="openGame('clusterrush')">Cluster Rush</button></div>
-    <div class="game-card" data-name="Cookie Clicker"><button class="game-btn" onclick="openGame('cookieclicker')">Cookie Clicker</button></div>
-    <div class="game-card" data-name="Core Ball"><button class="game-btn" onclick="openGame('coreball')">Core Ball</button></div>
-    <div class="game-card" data-name="Crazy Cattle 3D"><button class="game-btn" onclick="openGame('crazycattle')">Crazy Cattle 3D</button></div>
-    <div class="game-card" data-name="Crossy Road"><button class="game-btn" onclick="openGame('crossyroad')">Crossy Road</button></div>
-    <div class="game-card" data-name="Drift Boss"><button class="game-btn" onclick="openGame('driftboss')">Drift Boss</button></div>
-    <div class="game-card" data-name="Drift Hunters"><button class="game-btn" onclick="openGame('drifthunters')">Drift Hunters</button></div>
-    <div class="game-card" data-name="Drive Mad"><button class="game-btn" onclick="openGame('drivemad')">Drive Mad</button></div>
-    <div class="game-card" data-name="Escape Road 2"><button class="game-btn" onclick="openGame('escaperoad2')">Escape Road 2</button></div>
-    <div class="game-card" data-name="Escape Road City 2"><button class="game-btn" onclick="openGame('escaperoadcity2')">Escape Road City 2</button></div>
-    <div class="game-card" data-name="FNAF"><button class="game-btn" onclick="openGame('fnaf1')">FNAF</button></div>
-    <div class="game-card" data-name="FNAF 2"><button class="game-btn" onclick="openGame('fnaf2')">FNAF 2</button></div>
-    <div class="game-card" data-name="FNAF 3"><button class="game-btn" onclick="openGame('fnaf3')">FNAF 3</button></div>
-    <div class="game-card" data-name="FNAF 4"><button class="game-btn" onclick="openGame('fnaf4')">FNAF 4</button></div>
-    <div class="game-card" data-name="Football Bros"><button class="game-btn" onclick="openGame('footballbros')">Football Bros</button></div>
-    <div class="game-card" data-name="GD SubZero"><button class="game-btn" onclick="openGame('gdsubzero')">GD SubZero</button></div>
-    <div class="game-card" data-name="GD World"><button class="game-btn" onclick="openGame('gdworld')">GD World</button></div>
-    <div class="game-card" data-name="Geometry Dash Lite"><button class="game-btn" onclick="openGame('gdlite')">Geometry Dash Lite</button></div>
-    <div class="game-card" data-name="Getaway Shootout"><button class="game-btn" onclick="openGame('getawayshootout')">Getaway Shootout</button></div>
-    <div class="game-card" data-name="Granny 2"><button class="game-btn" onclick="openGame('granny2')">Granny 2</button></div>
-    <div class="game-card" data-name="Granny 3"><button class="game-btn" onclick="openGame('granny3')">Granny 3</button></div>
-    <div class="game-card" data-name="Granny Original"><button class="game-btn" onclick="openGame('grannyoriginal')">Granny Original</button></div>
-    <div class="game-card" data-name="Gun Spin"><button class="game-btn" onclick="openGame('gunspin')">🔫 Gun Spin</button></div>
-    <div class="game-card" data-name="Karate Bros"><button class="game-btn" onclick="openGame('karatebros')">Karate Bros</button></div>
-    <div class="game-card" data-name="Kart Bros"><button class="game-btn" onclick="openGame('kartbros')">Kart Bros</button></div>
-    <div class="game-card" data-name="Learn to Fly"><button class="game-btn" onclick="openGame('learntofly')">Learn to Fly</button></div>
-    <div class="game-card" data-name="Level Devil"><button class="game-btn" onclick="openGame('leveldevil')">Level Devil</button></div>
-    <div class="game-card" data-name="Monkey Mart"><button class="game-btn" onclick="openGame('monkeymart')">Monkey Mart</button></div>
-    <div class="game-card" data-name="Moto X3M"><button class="game-btn" onclick="openGame('motox3m')">Moto X3M</button></div>
-    <div class="game-card" data-name="OvO"><button class="game-btn" onclick="openGame('ovo')">OvO</button></div>
-    <div class="game-card" data-name="Pizza Tower"><button class="game-btn" onclick="openGame('pizzatower')">Pizza Tower</button></div>
-    <div class="game-card" data-name="Poly Track"><button class="game-btn" onclick="openGame('polytrack')">Poly Track</button></div>
-    <div class="game-card" data-name="Retro Bowl"><button class="game-btn" onclick="openGame('retrobowl')">Retro Bowl</button></div>
-    <div class="game-card" data-name="Retro Bowl College"><button class="game-btn" onclick="openGame('retrobowlcollege')">Retro Bowl College</button></div>
-    <div class="game-card" data-name="Rocket League"><button class="game-btn" onclick="openGame('rocketleague')">Rocket League</button></div>
-    <div class="game-card" data-name="Rooftop Snipers 2"><button class="game-btn" onclick="openGame('rooftopsnipers2')">Rooftop Snipers 2</button></div>
-    <div class="game-card" data-name="Run 3"><button class="game-btn" onclick="openGame('run3')">Run 3</button></div>
-    <div class="game-card" data-name="Slope Plus"><button class="game-btn" onclick="openGame('slopeplus')">Slope Plus</button></div>
-    <div class="game-card" data-name="Snow Rider 3D"><button class="game-btn" onclick="openGame('snowrider')">Snow Rider 3D</button></div>
-    <div class="game-card" data-name="Soccer Bros"><button class="game-btn" onclick="openGame('soccerbros')">Soccer Bros</button></div>
-    <div class="game-card" data-name="Soccer Random"><button class="game-btn" onclick="openGame('soccerrandom')">Soccer Random</button></div>
-    <div class="game-card" data-name="Space Waves"><button class="game-btn" onclick="openGame('spacewaves')">Space Waves</button></div>
-    <div class="game-card" data-name="Subway Surfers Houston"><button class="game-btn" onclick="openGame('subwaysurfers')">Subway Surfers Houston</button></div>
-    <div class="game-card" data-name="Super Liquid Soccer"><button class="game-btn" onclick="openGame('superliquidsoccer')">Super Liquid Soccer</button></div>
-    <div class="game-card" data-name="Survival Race"><button class="game-btn" onclick="openGame('survivalrace')">Survival Race</button></div>
-    <div class="game-card" data-name="Tiny Fishing"><button class="game-btn" onclick="openGame('tinyfishing')">Tiny Fishing</button></div>
-    <div class="game-card" data-name="Tunnel Rush"><button class="game-btn" onclick="openGame('tunnelrush')">Tunnel Rush</button></div>
-    <div class="game-card" data-name="Wrestle Bros"><button class="game-btn" onclick="openGame('wrestlebros')">Wrestle Bros</button></div>
+    <div class="game-card" data-name="1v1.LOL"><button class="game-btn" onclick="openGame('cl1v1lol.html')">1v1.LOL</button></div>
+    <div class="game-card" data-name="3Dash"><button class="game-btn" onclick="openGame('cl3dash.html')">3Dash</button></div>
+    <div class="game-card" data-name="A Small World Cup"><button class="game-btn" onclick="openGame('clasmallworldcup.html')">A Small World Cup</button></div>
+    <div class="game-card" data-name="Agar.io Lite"><button class="game-btn" onclick="openGame('clagariolite.html')">Agar.io Lite</button></div>
+    <div class="game-card" data-name="Apes vs Helium"><button class="game-btn" onclick="openGame('clapesvshelium.html')">Apes vs Helium</button></div>
+    <div class="game-card" data-name="Baseball Bros"><button class="game-btn" onclick="openGame('clbaseballbros.html')">Baseball Bros</button></div>
+    <div class="game-card" data-name="Basket Bros"><button class="game-btn" onclick="openGame('clbasketbros.html')">Basket Bros</button></div>
+    <div class="game-card" data-name="Basketball Stars"><button class="game-btn" onclick="openGame('clbasketballstars.html')">Basketball Stars</button></div>
+    <div class="game-card" data-name="Bit Planes"><button class="game-btn" onclick="openGame('clbitplanes.html')">Bit Planes</button></div>
+    <div class="game-card" data-name="BitLife"><button class="game-btn" onclick="openGame('clbitlife.html')">BitLife</button></div>
+    <div class="game-card" data-name="Block Blast"><button class="game-btn" onclick="openGame('clblockblastv2.html')">Block Blast</button></div>
+    <div class="game-card" data-name="Cluster Rush"><button class="game-btn" onclick="openGame('clclusterrush.html')">Cluster Rush</button></div>
+    <div class="game-card" data-name="Cookie Clicker"><button class="game-btn" onclick="openGame('clcookieclicker.html')">Cookie Clicker</button></div>
+    <div class="game-card" data-name="Core Ball"><button class="game-btn" onclick="openGame('clcoreball.html')">Core Ball</button></div>
+    <div class="game-card" data-name="Crazy Cattle 3D"><button class="game-btn" onclick="openGame('clcrazycattle3d.html')">Crazy Cattle 3D</button></div>
+    <div class="game-card" data-name="Crossy Road"><button class="game-btn" onclick="openGame('clcrossyroad.html')">Crossy Road</button></div>
+    <div class="game-card" data-name="Drift Boss"><button class="game-btn" onclick="openGame('cldriftboss.html')">Drift Boss</button></div>
+    <div class="game-card" data-name="Drift Hunters"><button class="game-btn" onclick="openGame('cldrifthuntersmerge.html')">Drift Hunters</button></div>
+    <div class="game-card" data-name="Drive Mad"><button class="game-btn" onclick="openGame('cldrivemady.html')">Drive Mad</button></div>
+    <div class="game-card" data-name="Escape Road 2"><button class="game-btn" onclick="openGame('clescaperoad-2.html')">Escape Road 2</button></div>
+    <div class="game-card" data-name="Escape Road City 2"><button class="game-btn" onclick="openGame('clescaperoadcity2.html')">Escape Road City 2</button></div>
+    <div class="game-card" data-name="FNAF"><button class="game-btn" onclick="openGame('clFNAF.html')">FNAF</button></div>
+    <div class="game-card" data-name="FNAF 2"><button class="game-btn" onclick="openGame('clFNAF2.html')">FNAF 2</button></div>
+    <div class="game-card" data-name="FNAF 3"><button class="game-btn" onclick="openGame('clFNAF3.html')">FNAF 3</button></div>
+    <div class="game-card" data-name="FNAF 4"><button class="game-btn" onclick="openGame('clFNAF4.html')">FNAF 4</button></div>
+    <div class="game-card" data-name="Football Bros"><button class="game-btn" onclick="openGame('clfootballbros.html')">Football Bros</button></div>
+    <div class="game-card" data-name="GD SubZero"><button class="game-btn" onclick="openGame('clgdsubzero.html')">GD SubZero</button></div>
+    <div class="game-card" data-name="GD World"><button class="game-btn" onclick="openGame('clGeometryDashWorld.html')">GD World</button></div>
+    <div class="game-card" data-name="Geometry Dash Lite"><button class="game-btn" onclick="openGame('clgdlite.html')">Geometry Dash Lite</button></div>
+    <div class="game-card" data-name="Getaway Shootout"><button class="game-btn" onclick="openGame('clgetawayshootout.html')">Getaway Shootout</button></div>
+    <div class="game-card" data-name="Granny 2"><button class="game-btn" onclick="openGame('clgranny22.html')">Granny 2</button></div>
+    <div class="game-card" data-name="Granny 3"><button class="game-btn" onclick="openGame('clgranny3.html')">Granny 3</button></div>
+    <div class="game-card" data-name="Granny Original"><button class="game-btn" onclick="openGame('clgrannyy.html')">Granny Original</button></div>
+    <div class="game-card" data-name="Gun Spin"><button class="game-btn" onclick="openGame('clgunspin.html')">🔫 Gun Spin</button></div>
+    <div class="game-card" data-name="Karate Bros"><button class="game-btn" onclick="openGame('clkaratebros.html')">Karate Bros</button></div>
+    <div class="game-card" data-name="Kart Bros"><button class="game-btn" onclick="openGame('clkartbros.html')">Kart Bros</button></div>
+    <div class="game-card" data-name="Learn to Fly"><button class="game-btn" onclick="openGame('cllearntofly.html')">Learn to Fly</button></div>
+    <div class="game-card" data-name="Level Devil"><button class="game-btn" onclick="openGame('clleveldevil.html')">Level Devil</button></div>
+    <div class="game-card" data-name="Monkey Mart"><button class="game-btn" onclick="openGame('clmonkeymart.html')">Monkey Mart</button></div>
+    <div class="game-card" data-name="Moto X3M"><button class="game-btn" onclick="openGame('clmotox3mm.html')">Moto X3M</button></div>
+    <div class="game-card" data-name="OvO"><button class="game-btn" onclick="openGame('clovofixed.html')">OvO</button></div>
+    <div class="game-card" data-name="Pizza Tower"><button class="game-btn" onclick="openGame('clpizzatower.html')">Pizza Tower</button></div>
+    <div class="game-card" data-name="Poly Track"><button class="game-btn" onclick="openGame('clpolytrackworksnow.html')">Poly Track</button></div>
+    <div class="game-card" data-name="Retro Bowl"><button class="game-btn" onclick="openGame('clretrobowl.html')">Retro Bowl</button></div>
+    <div class="game-card" data-name="Retro Bowl College"><button class="game-btn" onclick="openGame('clretrobowlcollege.html')">Retro Bowl College</button></div>
+    <div class="game-card" data-name="Rocket League"><button class="game-btn" onclick="openGame('clrocketleague.html')">Rocket League</button></div>
+    <div class="game-card" data-name="Rooftop Snipers 2"><button class="game-btn" onclick="openGame('clrooftopsnipers2.html')">Rooftop Snipers 2</button></div>
+    <div class="game-card" data-name="Run 3"><button class="game-btn" onclick="openGame('clrun3.html')">Run 3</button></div>
+    <div class="game-card" data-name="Slope Plus"><button class="game-btn" onclick="openGame('clslopeplus.html')">Slope Plus</button></div>
+    <div class="game-card" data-name="Snow Rider 3D"><button class="game-btn" onclick="openGame('clsnowrider.html')">Snow Rider 3D</button></div>
+    <div class="game-card" data-name="Soccer Bros"><button class="game-btn" onclick="openGame('clsoccerbros.html')">Soccer Bros</button></div>
+    <div class="game-card" data-name="Soccer Random"><button class="game-btn" onclick="openGame('clsoccerrandomgood.html')">Soccer Random</button></div>
+    <div class="game-card" data-name="Space Waves"><button class="game-btn" onclick="openGame('clspacewaves.html')">Space Waves</button></div>
+    <div class="game-card" data-name="Subway Surfers Houston"><button class="game-btn" onclick="openGame('clsubwaysurfershouston.html')">Subway Surfers Houston</button></div>
+    <div class="game-card" data-name="Super Liquid Soccer"><button class="game-btn" onclick="openGame('clsuperliquidsoccer.html')">Super Liquid Soccer</button></div>
+    <div class="game-card" data-name="Survival Race"><button class="game-btn" onclick="openGame('clcarkingarena.html')">Survival Race</button></div>
+    <div class="game-card" data-name="Tiny Fishing"><button class="game-btn" onclick="openGame('cltinyfishing.html')">Tiny Fishing</button></div>
+    <div class="game-card" data-name="Tunnel Rush"><button class="game-btn" onclick="openGame('cltunnelrushbetter.html')">Tunnel Rush</button></div>
+    <div class="game-card" data-name="Wrestle Bros"><button class="game-btn" onclick="openGame('clwrestlebros.html')">Wrestle Bros</button></div>
   </div>
 
   <script>
-    var gameFiles = {
-      lol:'cl1v1lol.html', dash3:'cl3dash.html', smallworldcup:'clasmallworldcup.html',
-      agario:'clagariolite.html', apesvshelium:'clapesvshelium.html',
-      baseballbros:'clbaseballbros.html', basketbros:'clbasketbros.html',
-      basketballstars:'clbasketballstars.html', bitplanes:'clbitplanes.html',
-      bitlife:'clbitlife.html', blockblast:'clblockblastv2.html',
-      clusterrush:'clclusterrush.html', cookieclicker:'clcookieclicker.html',
-      coreball:'clcoreball.html', crazycattle:'clcrazycattle3d.html',
-      crossyroad:'clcrossyroad.html', driftboss:'cldriftboss.html',
-      drifthunters:'cldrifthuntersmerge.html', drivemad:'cldrivemady.html',
-      escaperoad2:'clescaperoad-2.html', escaperoadcity2:'clescaperoadcity2.html',
-      fnaf1:'clFNAF.html', fnaf2:'clFNAF2.html', fnaf3:'clFNAF3.html', fnaf4:'clFNAF4.html',
-      footballbros:'clfootballbros.html', gdsubzero:'clgdsubzero.html',
-      gdworld:'clGeometryDashWorld.html', gdlite:'clgdlite.html',
-      getawayshootout:'clgetawayshootout.html', granny2:'clgranny22.html',
-      granny3:'clgranny3.html', grannyoriginal:'clgrannyy.html', gunspin:'clgunspin.html',
-      karatebros:'clkaratebros.html', kartbros:'clkartbros.html',
-      learntofly:'cllearntofly.html', leveldevil:'clleveldevil.html',
-      monkeymart:'clmonkeymart.html', motox3m:'clmotox3mm.html', ovo:'clovofixed.html',
-      pizzatower:'clpizzatower.html', polytrack:'clpolytrackworksnow.html',
-      retrobowl:'clretrobowl.html', retrobowlcollege:'clretrobowlcollege.html',
-      rocketleague:'clrocketleague.html', rooftopsnipers2:'clrooftopsnipers2.html',
-      run3:'clrun3.html', slopeplus:'clslopeplus.html', snowrider:'clsnowrider.html',
-      soccerbros:'clsoccerbros.html', soccerrandom:'clsoccerrandomgood.html',
-      spacewaves:'clspacewaves.html', subwaysurfers:'clsubwaysurfershouston.html',
-      superliquidsoccer:'clsuperliquidsoccer.html', survivalrace:'clcarkingarena.html',
-      tinyfishing:'cltinyfishing.html', tunnelrush:'cltunnelrushbetter.html',
-      wrestlebros:'clwrestlebros.html'
-    };
-
-    function openGame(key) {
-      var file = gameFiles[key];
-      if (!file) return;
-      var win = window.open('', '_blank');
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', file, true);
-      xhr.onload = function() {
-        if (xhr.status === 200) { win.document.open(); win.document.write(xhr.responseText); win.document.close(); }
-        else { win.location.href = file; }
-      };
-      xhr.onerror = function() { win.location.href = file; };
-      xhr.send();
+    // ── OPEN GAME — simple new tab, no fetch (fixes 404) ──
+    function openGame(file) {
+      window.open(file, '_blank');
     }
 
+    // ── CLOCK ──
     function updateClock() {
       var now = new Date();
       var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
@@ -299,8 +401,10 @@
     setInterval(updateClock, 1000);
     updateClock();
 
+    // ── BACK BUTTON RELOAD ──
     window.onpageshow = function(e) { if (e.persisted) window.location.reload(); };
 
+    // ── SEARCH ──
     var cards = document.querySelectorAll('.game-card');
     var countEl = document.getElementById('game-count');
     var noResults = document.getElementById('no-results');
@@ -315,7 +419,9 @@
         if (match) visible++;
       });
       noResults.style.display = visible === 0 ? 'block' : 'none';
-      countEl.textContent = q ? visible + ' GAME' + (visible !== 1 ? 'S' : '') + ' FOUND' : cards.length + ' GAMES';
+      countEl.textContent = q
+        ? visible + ' GAME' + (visible !== 1 ? 'S' : '') + ' FOUND'
+        : cards.length + ' GAMES';
     });
   </script>
 </body>
