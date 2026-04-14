@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0H7S7TJBPK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0H7S7TJBPK');
-</script>
   <title>Diegos/Tommys-Games</title>
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
@@ -67,18 +58,97 @@
       100% { opacity: 1; }
     }
 
-    /* Evenly scattered stars - all same size */
-    .star {
+    /* Star canvas layers via box-shadow */
+    .star-layer {
       position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 3s infinite alternate;
+      inset: 0;
+      pointer-events: none;
     }
-    @keyframes twinkle {
-      from { opacity: 0.3; }
-      to { opacity: 1; }
+    .star-layer::after { content: ''; position: absolute; border-radius: 50%; }
+
+    #stars-sm::after {
+      width: 1px; height: 1px; background: transparent;
+      box-shadow:
+        45px 120px #fff, 110px 34px #fff, 178px 210px #fff, 230px 80px #fff,
+        290px 155px #fff, 350px 40px #fff, 420px 190px #fff, 480px 95px #fff,
+        540px 260px #fff, 600px 15px #fff, 660px 140px #fff, 720px 220px #fff,
+        780px 70px #fff, 840px 180px #fff, 900px 50px #fff, 960px 230px #fff,
+        1020px 110px #fff, 1080px 290px #fff, 1140px 30px #fff, 1200px 160px #fff,
+        1260px 240px #fff, 1320px 85px #fff, 1380px 200px #fff, 60px 340px #fff,
+        130px 420px #fff, 195px 510px #fff, 255px 380px #fff, 315px 460px #fff,
+        375px 540px #fff, 435px 400px #fff, 495px 480px #fff, 555px 360px #fff,
+        615px 440px #fff, 675px 520px #fff, 735px 390px #fff, 795px 470px #fff,
+        855px 550px #fff, 915px 410px #fff, 975px 490px #fff, 1035px 370px #fff,
+        1095px 450px #fff, 1155px 530px #fff, 1215px 420px #fff, 1275px 500px #fff,
+        80px 600px #fff, 150px 680px #fff, 220px 750px #fff, 280px 630px #fff,
+        340px 710px #fff, 400px 790px #fff, 460px 660px #fff, 520px 730px #fff,
+        580px 810px #fff, 640px 670px #fff, 700px 740px #fff, 760px 820px #fff,
+        820px 690px #fff, 880px 760px #fff, 940px 840px #fff, 1000px 700px #fff,
+        1060px 770px #fff, 1120px 850px #fff, 1180px 720px #fff, 1240px 800px #fff,
+        25px 900px #fff, 95px 970px #fff, 165px 920px #fff, 235px 990px #fff,
+        305px 880px #fff, 375px 950px #fff, 445px 910px #fff, 515px 980px #fff,
+        585px 870px #fff, 655px 940px #fff, 725px 1000px #fff, 795px 890px #fff,
+        865px 960px #fff, 935px 930px #fff, 1005px 1010px #fff, 1075px 880px #fff;
+      animation: twinkle1 3s infinite alternate;
+    }
+    @keyframes twinkle1 { from { opacity:0.3; } to { opacity:1; } }
+
+    #stars-md::after {
+      width: 2px; height: 2px; background: transparent;
+      box-shadow:
+        70px 90px rgba(200,220,255,0.9), 200px 170px rgba(220,200,255,0.9),
+        330px 60px rgba(200,220,255,0.9), 460px 140px rgba(255,220,200,0.9),
+        590px 220px rgba(200,220,255,0.9), 720px 100px rgba(220,200,255,0.9),
+        850px 190px rgba(200,220,255,0.9), 980px 75px rgba(255,240,200,0.9),
+        1110px 160px rgba(200,220,255,0.9), 1240px 245px rgba(220,200,255,0.9),
+        140px 330px rgba(200,220,255,0.9), 270px 410px rgba(255,220,200,0.9),
+        400px 280px rgba(200,220,255,0.9), 530px 360px rgba(220,200,255,0.9),
+        660px 430px rgba(200,220,255,0.9), 790px 310px rgba(200,220,255,0.9),
+        920px 390px rgba(255,240,200,0.9), 1050px 470px rgba(200,220,255,0.9),
+        1180px 345px rgba(220,200,255,0.9), 100px 550px rgba(200,220,255,0.9),
+        230px 630px rgba(200,220,255,0.9), 360px 710px rgba(255,220,200,0.9),
+        490px 580px rgba(200,220,255,0.9), 620px 660px rgba(220,200,255,0.9),
+        750px 740px rgba(200,220,255,0.9), 880px 610px rgba(200,220,255,0.9),
+        1010px 690px rgba(255,240,200,0.9), 1140px 770px rgba(200,220,255,0.9);
+      animation: twinkle2 5s infinite alternate;
+    }
+    @keyframes twinkle2 { from { opacity:0.4; } to { opacity:1; } }
+
+    #stars-lg::after {
+      width: 3px; height: 3px; background: transparent;
+      box-shadow:
+        150px 50px rgba(255,255,255,0.95), 400px 130px rgba(200,220,255,0.95),
+        700px 80px rgba(255,240,200,0.95), 1000px 160px rgba(200,220,255,0.95),
+        250px 300px rgba(255,255,255,0.95), 550px 250px rgba(220,200,255,0.95),
+        850px 340px rgba(255,255,255,0.95), 1150px 280px rgba(200,220,255,0.95),
+        350px 500px rgba(255,240,200,0.95), 650px 450px rgba(255,255,255,0.95),
+        950px 530px rgba(200,220,255,0.95), 1250px 480px rgba(255,255,255,0.95),
+        100px 700px rgba(220,200,255,0.95), 450px 720px rgba(255,255,255,0.95),
+        800px 680px rgba(255,240,200,0.95), 1100px 740px rgba(200,220,255,0.95);
+      animation: twinkle3 7s infinite alternate;
+    }
+    @keyframes twinkle3 { from { opacity:0.5; } to { opacity:1; } }
+
+    /* Shooting stars */
+    .shoot {
+      position: absolute;
+      width: 3px;
+      height: 120px;
+      background: linear-gradient(rgba(255,255,255,0.9), transparent);
+      transform: rotate(45deg);
+      border-radius: 2px;
+      animation: shooting linear infinite;
+      opacity: 0;
+    }
+    .shoot:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+    .shoot:nth-child(2) { left: 35%; animation-duration: 10s; animation-delay: 3s; }
+    .shoot:nth-child(3) { left: 60%; animation-duration: 7s; animation-delay: 6s; }
+    .shoot:nth-child(4) { left: 80%; animation-duration: 9s; animation-delay: 1.5s; }
+    @keyframes shooting {
+      0%   { top: -10%; opacity: 0; }
+      5%   { opacity: 1; }
+      40%  { top: 110%; opacity: 0; }
+      100% { top: 110%; opacity: 0; }
     }
 
     /* ═══════════════════════════════════════
@@ -145,8 +215,6 @@
       transform: translateY(-50%);
       font-size: 20px;
       pointer-events: none;
-      z-index: 1;
-      filter: none;
     }
 
     /* ═══════════════════════════════════════
@@ -161,6 +229,12 @@
       font-size: 52px;
       margin: 0 0 10px;
       text-shadow: 0 0 30px rgba(180,100,255,0.7), 0 2px 8px rgba(0,0,0,0.9);
+      transition: 0.2s;
+      user-select: none;
+    }
+    h1:hover {
+      text-shadow: 0 0 50px rgba(200,150,255,1), 0 2px 8px rgba(0,0,0,0.9);
+      transform: scale(1.03);
     }
     #clock {
       font-size: 40px;
@@ -218,13 +292,18 @@
       z-index: 10;
     }
   </style>
-<base target="_blank">
 </head>
 <body>
 
   <!-- GALAXY BACKGROUND -->
   <div id="galaxy">
-    <!-- Stars will be generated by JavaScript for even distribution -->
+    <div class="star-layer" id="stars-sm"></div>
+    <div class="star-layer" id="stars-md"></div>
+    <div class="star-layer" id="stars-lg"></div>
+    <div class="shoot"></div>
+    <div class="shoot"></div>
+    <div class="shoot"></div>
+    <div class="shoot"></div>
   </div>
 
   <!-- TOP NAV -->
@@ -240,7 +319,7 @@
 
   <!-- HEADER -->
   <div id="header">
-    <h1>🎮 Diegos/Tommys Games</h1>
+    <h1 onclick="window.scrollTo({top:0,behavior:'smooth'});document.getElementById('search-input').value='';document.querySelectorAll('.game-card').forEach(function(c){c.classList.remove('hidden')});document.getElementById('game-count').textContent=document.querySelectorAll('.game-card').length+' GAMES';document.getElementById('no-results').style.display='none';" style="cursor:pointer;" title="Back to home">🎮 Diego/Tommys Games</h1>
     <div id="clock"></div>
     <div id="game-count"></div>
   </div>
@@ -268,6 +347,7 @@
     <div class="game-card" data-name="Drift Boss"><button class="game-btn" onclick="openGame('cldriftboss.html')">Drift Boss</button></div>
     <div class="game-card" data-name="Drift Hunters"><button class="game-btn" onclick="openGame('cldrifthuntersmerge.html')">Drift Hunters</button></div>
     <div class="game-card" data-name="Drive Mad"><button class="game-btn" onclick="openGame('cldrivemady.html')">Drive Mad</button></div>
+    <div class="game-card" data-name="Escape Road 2"><button class="game-btn" onclick="openGame('clescaperoad-2.html')">Escape Road 2</button></div>
     <div class="game-card" data-name="Escape Road City 2"><button class="game-btn" onclick="openGame('clescaperoadcity2.html')">Escape Road City 2</button></div>
     <div class="game-card" data-name="FNAF"><button class="game-btn" onclick="openGame('clFNAF.html')">FNAF</button></div>
     <div class="game-card" data-name="FNAF 2"><button class="game-btn" onclick="openGame('clFNAF2.html')">FNAF 2</button></div>
@@ -277,10 +357,11 @@
     <div class="game-card" data-name="GD SubZero"><button class="game-btn" onclick="openGame('clgdsubzero.html')">GD SubZero</button></div>
     <div class="game-card" data-name="GD World"><button class="game-btn" onclick="openGame('clGeometryDashWorld.html')">GD World</button></div>
     <div class="game-card" data-name="Geometry Dash Lite"><button class="game-btn" onclick="openGame('clgdlite.html')">Geometry Dash Lite</button></div>
+    <div class="game-card" data-name="Getaway Shootout"><button class="game-btn" onclick="openGame('clgetawayshootout.html')">Getaway Shootout</button></div>
     <div class="game-card" data-name="Granny 2"><button class="game-btn" onclick="openGame('clgranny22.html')">Granny 2</button></div>
     <div class="game-card" data-name="Granny 3"><button class="game-btn" onclick="openGame('clgranny3.html')">Granny 3</button></div>
     <div class="game-card" data-name="Granny Original"><button class="game-btn" onclick="openGame('clgrannyy.html')">Granny Original</button></div>
-    <div class="game-card" data-name="Gun Spin"><button class="game-btn" onclick="openGame('clgunspin.html')"> Gun Spin</button></div>
+    <div class="game-card" data-name="Gun Spin"><button class="game-btn" onclick="openGame('clgunspin.html')">🔫 Gun Spin</button></div>
     <div class="game-card" data-name="Karate Bros"><button class="game-btn" onclick="openGame('clkaratebros.html')">Karate Bros</button></div>
     <div class="game-card" data-name="Kart Bros"><button class="game-btn" onclick="openGame('clkartbros.html')">Kart Bros</button></div>
     <div class="game-card" data-name="Learn to Fly"><button class="game-btn" onclick="openGame('cllearntofly.html')">Learn to Fly</button></div>
@@ -309,22 +390,6 @@
   </div>
 
   <script>
-    // ── GENERATE EVENLY SCATTERED STARS ──
-    function generateStars() {
-      const galaxy = document.getElementById('galaxy');
-      const numStars = 150;
-
-      for (let i = 0; i < numStars; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        galaxy.appendChild(star);
-      }
-    }
-    generateStars();
-
     // ── OPEN GAME — about:blank trick (hides from history/filters) ──
     function openGame(file) {
       var win = window.open('about:blank', '_blank');
