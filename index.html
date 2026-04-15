@@ -119,39 +119,6 @@
       align-items: center;
     }
 
-    /* CSS-drawn search icon — no emoji, no blur */
-    #search-icon {
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
-      pointer-events: none;
-      z-index: 2;
-    }
-    #search-icon::before {
-      content: '';
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border: 2.5px solid rgba(200,170,255,0.8);
-      border-radius: 50%;
-      top: 0; left: 0;
-    }
- #search-icon::after {
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 2.5px;
-  background: rgba(200,170,255,0.8);
-  border-radius: 2px;
-  bottom: 1px;
-  right: 1px;
-  transform: rotate(45deg);
-  transform-origin: left center;
-}
-
     #search-input {
       background: rgba(255,255,255,0.08);
       border: 2px solid rgba(180,100,255,0.45);
@@ -159,15 +126,18 @@
       color: #fff;
       font-size: 20px;
       font-weight: bold;
-      padding: 14px 24px 14px 52px;
-      width: 280px;
+      padding: 14px 28px;
+      width: 300px;
       outline: none;
       transition: 0.3s;
       backdrop-filter: blur(8px);
     }
-    #search-input::placeholder { color: rgba(255,255,255,0.4); font-weight: normal; }
+    #search-input::placeholder {
+      color: rgba(255,255,255,0.4);
+      font-weight: normal;
+    }
     #search-input:focus {
-      width: 340px;
+      width: 360px;
       border-color: rgba(200,150,255,0.8);
       background: rgba(255,255,255,0.12);
       box-shadow: 0 0 20px rgba(160,80,255,0.4);
@@ -269,8 +239,7 @@
       </a>
     </div>
     <div id="search-wrap">
-      <div id="search-icon"></div>
-      <input type="text" id="search-input" placeholder="Search games..." autocomplete="off">
+      <input type="text" id="search-input" placeholder="🔍 Search games..." autocomplete="off">
     </div>
   </div>
 
@@ -361,7 +330,6 @@
     // ── OPEN GAME — about:blank trick ──
     function openGame(file) {
       var win = window.open('about:blank', '_blank');
-      // If it's a full URL (like google docs), just navigate to it
       if (file.startsWith('http')) {
         win.location.href = file;
         return;
