@@ -27,16 +27,12 @@
       background: #0a0015;
     }
 
-    /* ═══════════════════════════════════════
-       GALAXY BACKGROUND
-    ═══════════════════════════════════════ */
     #galaxy {
       position: fixed;
       inset: 0;
       z-index: 0;
       overflow: hidden;
     }
-
     #galaxy::before {
       content: '';
       position: absolute;
@@ -47,7 +43,6 @@
         radial-gradient(ellipse 70% 40% at 50% 80%, rgba(60,0,80,0.4) 0%, transparent 60%),
         radial-gradient(ellipse 100% 100% at 50% 50%, #0d0025 0%, #020008 100%);
     }
-
     #galaxy::after {
       content: '';
       position: absolute;
@@ -63,7 +58,6 @@
       0%   { opacity: 0.7; }
       100% { opacity: 1; }
     }
-
     .star {
       position: absolute;
       width: 2px;
@@ -77,9 +71,7 @@
       to   { opacity: 1; }
     }
 
-    /* ═══════════════════════════════════════
-       TOP NAV
-    ═══════════════════════════════════════ */
+    /* ═══ TOP NAV ═══ */
     #top-nav {
       position: relative;
       z-index: 10;
@@ -89,7 +81,6 @@
       padding: 24px 36px 0;
       width: 100%;
     }
-
     #request-link {
       font-size: 20px;
       font-weight: bold;
@@ -111,14 +102,11 @@
       box-shadow: 0 0 20px rgba(160,80,255,0.5);
       transform: scale(1.05);
     }
-
-    /* ── SEARCH ── */
     #search-wrap {
       position: relative;
       display: flex;
       align-items: center;
     }
-
     #search-input {
       background: rgba(255,255,255,0.08);
       border: 2px solid rgba(180,100,255,0.45);
@@ -143,15 +131,12 @@
       box-shadow: 0 0 20px rgba(160,80,255,0.4);
     }
 
-    /* ═══════════════════════════════════════
-       HEADER
-    ═══════════════════════════════════════ */
+    /* ═══ HEADER ═══ */
     #header {
       position: relative;
       z-index: 10;
       margin-top: 20px;
     }
-
     #save-reminder {
       font-size: 40px;
       margin-bottom: 6px;
@@ -159,7 +144,6 @@
       text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
       letter-spacing: 1px;
     }
-
     h1 {
       font-size: 52px;
       margin: 0 0 10px;
@@ -173,7 +157,6 @@
       text-shadow: 0 0 50px rgba(220,160,255,1), 0 2px 8px rgba(0,0,0,0.9);
       transform: scale(1.04);
     }
-
     #clock {
       font-size: 40px;
       margin-bottom: 10px;
@@ -183,12 +166,71 @@
       font-size: 14px;
       color: rgba(200,170,255,0.5);
       letter-spacing: 3px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    /* ═══════════════════════════════════════
-       GAMES GRID
-    ═══════════════════════════════════════ */
+    /* ═══ DUCKDUCKGO SEARCH ═══ */
+    #ddg-section {
+      position: relative;
+      z-index: 10;
+      margin: 0 auto 36px;
+      max-width: 620px;
+      padding: 0 24px;
+    }
+    #ddg-label {
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: rgba(200,170,255,0.5);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    #ddg-form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    #ddg-input {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(180,100,255,0.45);
+      border-radius: 30px;
+      color: #fff;
+      font-size: 18px;
+      padding: 14px 24px;
+      outline: none;
+      transition: 0.3s;
+      backdrop-filter: blur(8px);
+    }
+    #ddg-input::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+    #ddg-input:focus {
+      border-color: rgba(200,150,255,0.8);
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 0 20px rgba(160,80,255,0.4);
+    }
+    #ddg-btn {
+      background: rgba(120,0,255,0.3);
+      border: 2px solid rgba(180,100,255,0.55);
+      border-radius: 30px;
+      color: #d4aaff;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 14px 24px;
+      cursor: pointer;
+      transition: 0.25s;
+      white-space: nowrap;
+      backdrop-filter: blur(8px);
+    }
+    #ddg-btn:hover {
+      background: rgba(120,0,255,0.5);
+      border-color: rgba(200,150,255,0.9);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(160,80,255,0.5);
+      transform: scale(1.05);
+    }
+
+    /* ═══ GAMES GRID ═══ */
     .games-grid {
       display: flex;
       flex-wrap: wrap;
@@ -200,9 +242,7 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-
     .game-card.hidden { display: none; }
-
     .game-btn {
       padding: 22px 70px;
       font-size: 28px;
@@ -220,7 +260,6 @@
       transform: scale(1.12);
       box-shadow: 0 0 30px rgba(255,255,255,0.6);
     }
-
     #no-results {
       display: none;
       font-size: 24px;
@@ -233,7 +272,6 @@
 </head>
 <body>
 
-  <!-- GALAXY BACKGROUND -->
   <div id="galaxy"></div>
 
   <!-- TOP NAV -->
@@ -251,7 +289,7 @@
     </div>
   </div>
 
-  <!-- HEADER — title is a home button -->
+  <!-- HEADER -->
   <div id="header">
     <div id="save-reminder">⌨️ CTRL+D To Save!</div>
     <h1 onclick="goHome()" title="Back to home">🎮 Diego's/Tommy's Games</h1>
@@ -259,9 +297,18 @@
     <div id="game-count"></div>
   </div>
 
+  <!-- DUCKDUCKGO SEARCH -->
+  <div id="ddg-section">
+    <div id="ddg-label">🦆 DuckDuckGo Search</div>
+    <div id="ddg-form">
+      <input type="text" id="ddg-input" placeholder="Search the web privately..." autocomplete="off">
+      <button id="ddg-btn" onclick="duckSearch()">🔍 Search</button>
+    </div>
+  </div>
+
   <div id="no-results">No games found 🔭</div>
 
-  <!-- GAMES GRID — ABC ORDER -->
+  <!-- GAMES GRID -->
   <div class="games-grid">
     <div class="game-card" data-name="1v1.LOL"><button class="game-btn" onclick="openGame('cl1v1lol.html')">1v1.LOL</button></div>
     <div class="game-card" data-name="3Dash"><button class="game-btn" onclick="openGame('cl3dash.html')">3Dash</button></div>
@@ -336,7 +383,18 @@
     }
     generateStars();
 
-    // ── OPEN GAME — about:blank trick ──
+    // ── DUCKDUCKGO SEARCH ──
+    function duckSearch() {
+      var q = document.getElementById('ddg-input').value.trim();
+      if (!q) return;
+      var win = window.open('about:blank', '_blank');
+      win.location.href = 'https://duckduckgo.com/?q=' + encodeURIComponent(q);
+    }
+    document.getElementById('ddg-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') duckSearch();
+    });
+
+    // ── OPEN GAME ──
     function openGame(file) {
       var win = window.open('about:blank', '_blank');
       if (file.startsWith('http')) {
@@ -355,7 +413,7 @@
         });
     }
 
-    // ── HOME BUTTON (title click) ──
+    // ── HOME BUTTON ──
     function goHome() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       document.getElementById('search-input').value = '';
@@ -382,7 +440,7 @@
     // ── BACK BUTTON RELOAD ──
     window.onpageshow = function(e) { if (e.persisted) window.location.reload(); };
 
-    // ── SEARCH ──
+    // ── GAME SEARCH ──
     var cards = document.querySelectorAll('.game-card');
     var countEl = document.getElementById('game-count');
     var noResults = document.getElementById('no-results');
