@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Learning Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top bar */
+    .header {
+      background: #0f172a;
+      color: white;
+      padding: 16px 24px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Main content */
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    p {
+      color: #475569;
+      margin-bottom: 25px;
+    }
+
+    .status {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: #2563eb;
+      transition: width 0.2s;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 12px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  📚 Student Learning Portal
+</div>
+
+<div class="container">
+  <div class="card">
+    <h1>Accessing Resources</h1>
+    <p>Please wait while we prepare your learning environment.</p>
+
+    <div class="status" id="status">Initializing...</div>
+
+    <div class="progress-bar">
+      <div class="progress" id="bar"></div>
+    </div>
+
+    <button onclick="enterSite()">Continue</button>
+  </div>
+</div>
+
+<div class="footer">
+  © 2026 School District Portal
+</div>
+
+<script>
+  let progress = 0;
+  let bar = document.getElementById("bar");
+  let status = document.getElementById("status");
+
+  const messages = [
+    "Initializing...",
+    "Loading student data...",
+    "Verifying access...",
+    "Preparing dashboard..."
+  ];
+
+  let msgIndex = 0;
+
+  let interval = setInterval(() => {
+    progress += Math.random() * 20;
+
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(interval);
+      status.innerText = "Ready";
+      setTimeout(enterSite, 500);
+    }
+
+    bar.style.width = progress + "%";
+
+    if (msgIndex < messages.length - 1 && progress > (msgIndex + 1) * 25) {
+      msgIndex++;
+      status.innerText = messages[msgIndex];
+    }
+
+  }, 300);
+
+  function enterSite() {
+    window.location.href = "games.html";
+  }
+</script>
+
+</body>
+</html>
