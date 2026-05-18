@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Student Learning Portal</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -24,68 +25,90 @@
       font-weight: bold;
     }
 
-    /* Main content */
+    /* Main content container */
     .container {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 20px;
     }
 
+    /* Main card layout */
     .card {
       background: white;
       padding: 40px;
       border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      text-align: center;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     }
 
     h1 {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       font-size: 26px;
+      text-align: center;
+      color: #0f172a;
     }
 
-    p {
-      color: #475569;
-      margin-bottom: 25px;
-    }
-
-    .status {
-      font-size: 14px;
-      color: #64748b;
+    /* Announcement Section Styles */
+    .announcements-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2563eb;
       margin-bottom: 15px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 5px;
     }
 
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 25px;
+    .announcement-item {
+      background: #f8fafc;
+      border-left: 4px solid #64748b;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 0 6px 6px 0;
     }
 
-    .progress {
-      height: 100%;
-      width: 0%;
-      background: #2563eb;
-      transition: width 0.2s;
+    .announcement-date {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .announcement-text {
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Button Wrap */
+    .action-wrap {
+      text-align: center;
+      margin-top: 30px;
     }
 
     button {
-      padding: 12px 24px;
+      padding: 14px 32px;
       font-size: 16px;
+      font-weight: bold;
       border: none;
       border-radius: 6px;
       background: #2563eb;
       color: white;
       cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
     }
 
     button:hover {
       background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
     }
 
     .footer {
@@ -93,6 +116,8 @@
       padding: 12px;
       font-size: 12px;
       color: #94a3b8;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
     }
   </style>
 </head>
@@ -104,16 +129,27 @@
 
 <div class="container">
   <div class="card">
-    <h1>Accessing Resources</h1>
-    <p>Please wait while we prepare your learning environment.</p>
+    <h1>Dashboard & Workspace</h1>
+    
+    <div class="announcements-title">Recent Announcements</div>
 
-    <div class="status" id="status">Initializing...</div>
-
-    <div class="progress-bar">
-      <div class="progress" id="bar"></div>
+    <div class="announcement-item">
+      <span class="announcement-date">May 18, 2026</span>
+      <p class="announcement-text">
+        The review directory components have been updated for the upcoming semester. Please ensure your local workspace links are refreshed.
+      </p>
     </div>
 
-    <button onclick="enterSite()">Continue</button>
+    <div class="announcement-item">
+      <span class="announcement-date">May 12, 2026</span>
+      <p class="announcement-text">
+        System maintenance is scheduled for this upcoming weekend. Access to cloud-hosted repositories may experience temporary latency.
+      </p>
+    </div>
+
+    <div class="action-wrap">
+      <button onclick="enterSite()">Access Resource Directory</button>
+    </div>
   </div>
 </div>
 
@@ -122,39 +158,8 @@
 </div>
 
 <script>
-  let progress = 0;
-  let bar = document.getElementById("bar");
-  let status = document.getElementById("status");
-
-  const messages = [
-    "Initializing...",
-    "Loading student data...",
-    "Verifying access...",
-    "Preparing dashboard..."
-  ];
-
-  let msgIndex = 0;
-
-  let interval = setInterval(() => {
-    progress += Math.random() * 20;
-
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
-      status.innerText = "Ready";
-      setTimeout(enterSite, 500);
-    }
-
-    bar.style.width = progress + "%";
-
-    if (msgIndex < messages.length - 1 && progress > (msgIndex + 1) * 25) {
-      msgIndex++;
-      status.innerText = messages[msgIndex];
-    }
-
-  }, 300);
-
   function enterSite() {
+    // Navigates directly to your content grid page
     window.location.href = "games.html";
   }
 </script>
