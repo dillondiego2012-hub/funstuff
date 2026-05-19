@@ -4,164 +4,37 @@
   <title>Student Learning Portal</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f1f5f9;
-      color: #1e293b;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Top bar */
-    .header {
-      background: #0f172a;
-      color: white;
-      padding: 16px 24px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    /* Main content container */
-    .container {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    /* Main card layout */
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 600px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      font-size: 26px;
-      text-align: center;
-      color: #0f172a;
-    }
-
-    /* Announcement Section Styles */
-    .announcements-title {
-      font-size: 18px;
-      font-weight: bold;
-      color: #2563eb;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 5px;
-    }
-
-    .announcement-item {
-      background: #f8fafc;
-      border-left: 4px solid #64748b;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 0 6px 6px 0;
-    }
-
-    .announcement-date {
-      font-size: 12px;
-      color: #94a3b8;
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .announcement-text {
-      color: #475569;
-      font-size: 14px;
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    /* Button Wrap */
-    .action-wrap {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    button {
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      background: #2563eb;
-      color: white;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-    }
-
-    button:hover {
-      background: #1d4ed8;
-      transform: translateY(-1px);
-    }
-
-    button:active {
-      transform: translateY(0);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 12px;
-      font-size: 12px;
-      color: #94a3b8;
-      background: #ffffff;
-      border-top: 1px solid #e2e8f0;
-    }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f1f5f9; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
+    .header { background: #0f172a; color: white; padding: 16px 24px; font-size: 20px; font-weight: bold; }
+    .container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .card { background: white; padding: 40px; border-radius: 10px; width: 100%; max-width: 600px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+    h1 { margin-bottom: 20px; font-size: 26px; text-align: center; color: #0f172a; }
+    .announcements-title { font-size: 18px; font-weight: bold; color: #2563eb; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; }
+    .announcement-item { background: #f8fafc; border-left: 4px solid #64748b; padding: 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+    .announcement-date { font-size: 12px; color: #94a3b8; font-weight: bold; display: block; margin-bottom: 5px; }
+    .announcement-text { color: #475569; font-size: 14px; line-height: 1.5; margin: 0; }
+    .action-wrap { text-align: center; margin-top: 30px; }
+    button { padding: 14px 32px; font-size: 16px; font-weight: bold; border: none; border-radius: 6px; background: #2563eb; color: white; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: #1d4ed8; }
+    .footer { text-align: center; padding: 12px; font-size: 12px; color: #94a3b8; background: #ffffff; border-top: 1px solid #e2e8f0; }
   </style>
 </head>
 <body>
-
-<div class="header">
-  📚 Student Learning Portal
-</div>
-
+<div class="header">📚 Student Learning Portal</div>
 <div class="container">
   <div class="card">
     <h1>Dashboard & Workspace</h1>
-    
     <div class="announcements-title">Recent Announcements</div>
-
     <div class="announcement-item">
       <span class="announcement-date">May 18, 2026</span>
-      <p class="announcement-text">
-        The review directory components have been updated for the upcoming semester. Please ensure your local workspace links are refreshed.
-      </p>
+      <p class="announcement-text">The review directory components have been updated for the upcoming semester. Please ensure your local workspace links are refreshed.</p>
     </div>
-
-    <div class="announcement-item">
-      <span class="announcement-date">May 12, 2026</span>
-      <p class="announcement-text">
-        System maintenance is scheduled for this upcoming weekend. Access to cloud-hosted repositories may experience temporary latency.
-      </p>
-    </div>
-
     <div class="action-wrap">
-      <button onclick="enterSite()">Access Resource Directory</button>
+      <button onclick="location.href='practice-modules.html'">Access Resource Directory</button>
     </div>
   </div>
 </div>
-
-<div class="footer">
-  © 2026 School District Portal
-</div>
-
-<script>
-  function enterSite() {
-    window.location.href = "practice-modules.html";
-  }
-</script>
-
+<div class="footer">© 2026 School District Portal</div>
 </body>
 </html>
