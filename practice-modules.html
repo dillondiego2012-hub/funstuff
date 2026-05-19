@@ -35,14 +35,21 @@
 
     @keyframes shimmer { 0% { opacity: 0.3; } 100% { opacity: 1; } }
 
-    #header { position: relative; z-index: 10; padding: 40px 0; }
-    h1 { font-size: 44px; text-shadow: 0 0 20px #8b5cf6; margin-bottom: 10px; }
-    #clock { font-size: 24px; opacity: 0.7; margin-bottom: 20px; }
+    #header { position: relative; z-index: 10; padding: 40px 0 20px; }
+    h1 { font-size: 44px; text-shadow: 0 0 20px #8b5cf6; margin-bottom: 5px; }
+    
+    #search-container { position: relative; z-index: 10; margin-bottom: 30px; }
+    #search-input {
+      width: 100%; max-width: 400px; padding: 12px 25px; font-size: 18px;
+      border-radius: 25px; border: 1px solid rgba(139, 92, 246, 0.5);
+      background: rgba(255, 255, 255, 0.1); color: white; outline: none;
+      backdrop-filter: blur(10px); transition: 0.3s;
+    }
+    #search-input:focus { border-color: #8b5cf6; box-shadow: 0 0 15px rgba(139, 92, 246, 0.5); width: 450px; }
 
     .lectures-grid {
       display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 15px; padding: 0 20px 100px;
-      position: relative; z-index: 10;
+      gap: 15px; padding: 0 20px 100px; position: relative; z-index: 10;
       max-width: 1400px; margin: 0 auto;
     }
 
@@ -59,6 +66,8 @@
       transform: translateY(-3px);
       box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
     }
+
+    .hidden { display: none; }
   </style>
 </head>
 <body>
@@ -67,69 +76,91 @@
 
   <div id="header">
     <h1>📐 STAAR Review Hub</h1>
-    <div id="clock"></div>
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Search curriculum modules..." onkeyup="filterModules()">
+    </div>
   </div>
 
-  <div class="lectures-grid">
-    <button class="lecture-btn" onclick="openModule('module1.html')">Algebraic Logic M1</button>
-    <button class="lecture-btn" onclick="openModule('module2.html')">Geometry Core 3D</button>
-    <button class="lecture-btn" onclick="openModule('module3.html')">Global Physics Simulation</button>
-    <button class="lecture-btn" onclick="openModule('module4.html')">Cellular Mass Equations</button>
-    <button class="lecture-btn" onclick="openModule('module5.html')">Element Displacement Lab</button>
-    <button class="lecture-btn" onclick="openModule('module6.html')">Trajectory Mechanics A</button>
-    <button class="lecture-btn" onclick="openModule('module7.html')">Parabolic Arcs B</button>
-    <button class="lecture-btn" onclick="openModule('module8.html')">Kinetic Velocity Analysis</button>
-    <button class="lecture-btn" onclick="openModule('module9.html')">Vector Plane Geometry</button>
-    <button class="lecture-btn" onclick="openModule('module10.html')">Probability Matrix</button>
-    <button class="lecture-btn" onclick="openModule('module11.html')">Spatial Tessellation</button>
-    <button class="lecture-btn" onclick="openModule('module12.html')">Velocity Momentum Test</button>
-    <button class="lecture-btn" onclick="openModule('module13.html')">Exponential Growth Tracker</button>
-    <button class="lecture-btn" onclick="openModule('module14.html')">Centripetal Speed Lab</button>
-    <button class="lecture-btn" onclick="openModule('module15.html')">Dynamic 3D Vector Models</button>
-    <button class="lecture-btn" onclick="openModule('module16.html')">Axis Grid Nav Review</button>
-    <button class="lecture-btn" onclick="openModule('module17.html')">Angular Friction Coefficients</button>
-    <button class="lecture-btn" onclick="openModule('module18.html')">Centrifugal Force Lab</button>
-    <button class="lecture-btn" onclick="openModule('module19.html')">Torque & Vector Mass</button>
-    <button class="lecture-btn" onclick="openModule('module20.html')">Grid Matrix Velocity</button>
-    <button class="lecture-btn" onclick="openModule('module21.html')">Security Logic System 1</button>
-    <button class="lecture-btn" onclick="openModule('module22.html')">Security Logic System 2</button>
-    <button class="lecture-btn" onclick="openModule('module23.html')">Security Logic System 3</button>
-    <button class="lecture-btn" onclick="openModule('module24.html')">Security Logic System 4</button>
-    <button class="lecture-btn" onclick="openModule('module25.html')">Gridiron Friction Models</button>
-    <button class="lecture-btn" onclick="openModule('module26.html')">SubZero Angular Traversal</button>
-    <button class="lecture-btn" onclick="openModule('module27.html')">Global Vertex Matrix</button>
-    <button class="lecture-btn" onclick="openModule('module28.html')">Spatial Comp Analysis</button>
-    <button class="lecture-btn" onclick="openModule('module29.html')">Spatial Deceleration II</button>
-    <button class="lecture-btn" onclick="openModule('module30.html')">Spatial Deceleration III</button>
-    <button class="lecture-btn" onclick="openModule('module31.html')">Spatial Deceleration Test</button>
-    <button class="lecture-btn" onclick="openModule('module32.html')">Rotational Recoil Torque</button>
-    <button class="lecture-btn" onclick="openModule('module33.html')">Impact Mechanics Alpha</button>
-    <button class="lecture-btn" onclick="openModule('module34.html')">Centripetal Velocity Track</button>
-    <button class="lecture-btn" onclick="openModule('module35.html')">Aerodynamic Lift Equations</button>
-    <button class="lecture-btn" onclick="openModule('module36.html')">Variable Chaos Theorems</button>
-    <button class="lecture-btn" onclick="openModule('module37.html')">Marketplace Economics</button>
-    <button class="lecture-btn" onclick="openModule('module38.html')">Calculus Acceleration Plot</button>
-    <button class="lecture-btn" onclick="openModule('module39.html')">Line Segment Geometry</button>
-    <button class="lecture-btn" onclick="openModule('module40.html')">Asymmetric Layout Design</button>
-    <button class="lecture-btn" onclick="openModule('module41.html')">Polygonal Vector Slopes</button>
-    <button class="lecture-btn" onclick="openModule('module42.html')">Statistical Playbook Calculus</button>
-    <button class="lecture-btn" onclick="openModule('module43.html')">Advanced Playbook Calculus</button>
-    <button class="lecture-btn" onclick="openModule('module44.html')">Spherical Impulse Collision</button>
-    <button class="lecture-btn" onclick="openModule('module45.html')">Two-Dimensional Angle Plots</button>
-    <button class="lecture-btn" onclick="openModule('module46.html')">Three-Dimensional Spatials</button>
-    <button class="lecture-btn" onclick="openModule('module47.html')">Z-Axis Displacement Fluid</button>
-    <button class="lecture-btn" onclick="openModule('module48.html')">Friction Coefficient Plots</button>
-    <button class="lecture-btn" onclick="openModule('module49.html')">Stochastic Physics Model</button>
-    <button class="lecture-btn" onclick="openModule('module50.html')">Frequency Trajectory</button>
-    <button class="lecture-btn" onclick="openModule('module51.html')">Linear Velocity Grid Track</button>
-    <button class="lecture-btn" onclick="openModule('module52.html')">Fluid Kinematics Simulation</button>
-    <button class="lecture-btn" onclick="openModule('module53.html')">Kinetic Impact Endurance</button>
-    <button class="lecture-btn" onclick="openModule('module54.html')">Sub-Surface Probability Loops</button>
-    <button class="lecture-btn" onclick="openModule('module55.html')">Cylindrical Vertex Traversal</button>
-    <button class="lecture-btn" onclick="openModule('module56.html')">Center of Mass Leverages</button>
+  <div class="lectures-grid" id="module-grid">
+    <button class="lecture-btn" data-tags="1v1 lol" onclick="openModule('module1.html')">Algebraic Logic M1</button>
+    <button class="lecture-btn" data-tags="3dash geometry dash" onclick="openModule('module2.html')">Geometry Core 3D</button>
+    <button class="lecture-btn" data-tags="a small world cup soccer" onclick="openModule('module3.html')">Global Physics Simulation</button>
+    <button class="lecture-btn" data-tags="agar.io" onclick="openModule('module4.html')">Cellular Mass Equations</button>
+    <button class="lecture-btn" data-tags="apes vs helium" onclick="openModule('module5.html')">Element Displacement Lab</button>
+    <button class="lecture-btn" data-tags="baseball bros" onclick="openModule('module6.html')">Trajectory Mechanics A</button>
+    <button class="lecture-btn" data-tags="basket bros" onclick="openModule('module7.html')">Parabolic Arcs B</button>
+    <button class="lecture-btn" data-tags="basketball stars" onclick="openModule('module8.html')">Kinetic Velocity Analysis</button>
+    <button class="lecture-btn" data-tags="bit planes" onclick="openModule('module9.html')">Vector Plane Geometry</button>
+    <button class="lecture-btn" data-tags="bitlife" onclick="openModule('module10.html')">Probability Matrix</button>
+    <button class="lecture-btn" data-tags="block blast" onclick="openModule('module11.html')">Spatial Tessellation</button>
+    <button class="lecture-btn" data-tags="cluster rush" onclick="openModule('module12.html')">Velocity Momentum Test</button>
+    <button class="lecture-btn" data-tags="cookie clicker" onclick="openModule('module13.html')">Exponential Growth Tracker</button>
+    <button class="lecture-btn" data-tags="core ball" onclick="openModule('module14.html')">Centripetal Speed Lab</button>
+    <button class="lecture-btn" data-tags="crazy cattle 3d" onclick="openModule('module15.html')">Dynamic 3D Vector Models</button>
+    <button class="lecture-btn" data-tags="crossy road" onclick="openModule('module16.html')">Axis Grid Nav Review</button>
+    <button class="lecture-btn" data-tags="drift boss" onclick="openModule('module17.html')">Angular Friction Coefficients</button>
+    <button class="lecture-btn" data-tags="drift hunters" onclick="openModule('module18.html')">Centrifugal Force Lab</button>
+    <button class="lecture-btn" data-tags="drive mad" onclick="openModule('module19.html')">Torque & Vector Mass</button>
+    <button class="lecture-btn" data-tags="escape road city 2" onclick="openModule('module20.html')">Grid Matrix Velocity</button>
+    <button class="lecture-btn" data-tags="fnaf five nights at freddys" onclick="openModule('module21.html')">Security Logic System 1</button>
+    <button class="lecture-btn" data-tags="fnaf 2" onclick="openModule('module22.html')">Security Logic System 2</button>
+    <button class="lecture-btn" data-tags="fnaf 3" onclick="openModule('module23.html')">Security Logic System 3</button>
+    <button class="lecture-btn" data-tags="fnaf 4" onclick="openModule('module24.html')">Security Logic System 4</button>
+    <button class="lecture-btn" data-tags="football bros" onclick="openModule('module25.html')">Gridiron Friction Models</button>
+    <button class="lecture-btn" data-tags="geometry dash subzero" onclick="openModule('module26.html')">SubZero Angular Traversal</button>
+    <button class="lecture-btn" data-tags="geometry dash world" onclick="openModule('module27.html')">Global Vertex Matrix</button>
+    <button class="lecture-btn" data-tags="geometry dash lite" onclick="openModule('module28.html')">Spatial Comp Analysis</button>
+    <button class="lecture-btn" data-tags="granny 2" onclick="openModule('module29.html')">Spatial Deceleration II</button>
+    <button class="lecture-btn" data-tags="granny 3" onclick="openModule('module30.html')">Spatial Deceleration III</button>
+    <button class="lecture-btn" data-tags="granny original" onclick="openModule('module31.html')">Spatial Deceleration Test</button>
+    <button class="lecture-btn" data-tags="gun spin" onclick="openModule('module32.html')">Rotational Recoil Torque</button>
+    <button class="lecture-btn" data-tags="karate bros" onclick="openModule('module33.html')">Impact Mechanics Alpha</button>
+    <button class="lecture-btn" data-tags="kart bros" onclick="openModule('module34.html')">Centripetal Velocity Track</button>
+    <button class="lecture-btn" data-tags="learn to fly" onclick="openModule('module35.html')">Aerodynamic Lift Equations</button>
+    <button class="lecture-btn" data-tags="level devil" onclick="openModule('module36.html')">Variable Chaos Theorems</button>
+    <button class="lecture-btn" data-tags="monkey mart" onclick="openModule('module37.html')">Marketplace Economics</button>
+    <button class="lecture-btn" data-tags="moto x3m" onclick="openModule('module38.html')">Calculus Acceleration Plot</button>
+    <button class="lecture-btn" data-tags="ovo" onclick="openModule('module39.html')">Line Segment Geometry</button>
+    <button class="lecture-btn" data-tags="pizza tower" onclick="openModule('module40.html')">Asymmetric Layout Design</button>
+    <button class="lecture-btn" data-tags="poly track" onclick="openModule('module41.html')">Polygonal Vector Slopes</button>
+    <button class="lecture-btn" data-tags="retro bowl" onclick="openModule('module42.html')">Statistical Playbook Calculus</button>
+    <button class="lecture-btn" data-tags="retro bowl college" onclick="openModule('module43.html')">Advanced Playbook Calculus</button>
+    <button class="lecture-btn" data-tags="rocket league" onclick="openModule('module44.html')">Spherical Impulse Collision</button>
+    <button class="lecture-btn" data-tags="rooftop snipers 2" onclick="openModule('module45.html')">Two-Dimensional Angle Plots</button>
+    <button class="lecture-btn" data-tags="run 3" onclick="openModule('module46.html')">Three-Dimensional Spatials</button>
+    <button class="lecture-btn" data-tags="snow rider 3d" onclick="openModule('module47.html')">Z-Axis Displacement Fluid</button>
+    <button class="lecture-btn" data-tags="soccer bros" onclick="openModule('module48.html')">Friction Coefficient Plots</button>
+    <button class="lecture-btn" data-tags="soccer random" onclick="openModule('module49.html')">Stochastic Physics Model</button>
+    <button class="lecture-btn" data-tags="space waves" onclick="openModule('module50.html')">Frequency Trajectory</button>
+    <button class="lecture-btn" data-tags="subway surfers" onclick="openModule('module51.html')">Linear Velocity Grid Track</button>
+    <button class="lecture-btn" data-tags="super liquid soccer" onclick="openModule('module52.html')">Fluid Kinematics Simulation</button>
+    <button class="lecture-btn" data-tags="survival race" onclick="openModule('module53.html')">Kinetic Impact Endurance</button>
+    <button class="lecture-btn" data-tags="tiny fishing" onclick="openModule('module54.html')">Sub-Surface Probability Loops</button>
+    <button class="lecture-btn" data-tags="tunnel rush" onclick="openModule('module55.html')">Cylindrical Vertex Traversal</button>
+    <button class="lecture-btn" data-tags="wrestle bros" onclick="openModule('module56.html')">Center of Mass Leverages</button>
   </div>
 
   <script>
+    // SMART Search Function
+    function filterModules() {
+      const input = document.getElementById('search-input');
+      const filter = input.value.toLowerCase();
+      const buttons = document.getElementsByClassName('lecture-btn');
+
+      for (let i = 0; i < buttons.length; i++) {
+        const mathName = buttons[i].textContent.toLowerCase();
+        const secretTags = buttons[i].getAttribute('data-tags').toLowerCase();
+        
+        // Searches BOTH the visible math name AND the hidden secret tags
+        if (mathName.includes(filter) || secretTags.includes(filter)) {
+          buttons[i].classList.remove('hidden');
+        } else {
+          buttons[i].classList.add('hidden');
+        }
+      }
+    }
+
+    // Star generator
     const galaxy = document.getElementById('galaxy');
     for (let i = 0; i < 150; i++) {
       const star = document.createElement('div');
@@ -143,6 +174,7 @@
       galaxy.appendChild(star);
     }
 
+    // Stealth Loader
     function openModule(file) {
       const win = window.open('about:blank', '_blank');
       fetch(file)
@@ -154,12 +186,6 @@
         })
         .catch(() => { win.location.href = file; });
     }
-
-    function updateClock() {
-      document.getElementById('clock').innerText = new Date().toLocaleTimeString();
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
   </script>
 </body>
 </html>
