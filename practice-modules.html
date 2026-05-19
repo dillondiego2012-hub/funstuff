@@ -9,7 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-0H7S7TJBPK');
   </script>
-  <title>Diego's/Tommy's-Games</title>
+  <title>STAAR Review Hub</title>
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -236,25 +236,16 @@
   <!-- GALAXY BACKGROUND -->
   <div id="galaxy"></div>
 
-  <!-- TOP NAV -->
-  <div id="top-nav">
-    <div style="display:flex;gap:14px;align-items:center;">
-      <a id="request-link" href="#" onclick="openGame('https://docs.google.com/forms/d/e/1FAIpQLSc0wJjFKWJRE928DVr3Pj-RWPKy-75QgNIjFQIMUyQ76MGzLQ/viewform?usp=dialog'); return false;">
-        📬 Request Games
-      </a>
-      <a id="request-link" href="#" onclick="openGame('https://docs.google.com/spreadsheets/d/1c08AajavNjkT8PnXe4whIE6DuXj6iXmi6Wzkn1tJ-E0/edit?usp=sharing'); return false;">
-        📋 Game Responses
-      </a>
-    </div>
-    <div id="search-wrap">
-      <input type="text" id="search-input" placeholder="🔍 Search games..." autocomplete="off">
+
+<div id="search-wrap">
+      <input type="text" id="search-input" placeholder="🔍 Search Modules..." autocomplete="off">
     </div>
   </div>
 
   <!-- HEADER — title is a home button -->
   <div id="header">
-    <div id="save-reminder">⌨️ CTRL+D To Save!</div>
-    <h1 onclick="goHome()" title="Back to home">🎮 Diego's/Tommy's Games</h1>
+    <div id="save-reminder">⌨️ CTRL+D to Save Review Hub!</div>
+    <h1 onclick="goHome()" title="Back to home">📐STAAR Review Hub</h1>
     <div id="clock"></div>
     <div id="game-count"></div>
   </div>
@@ -336,7 +327,7 @@
     }
     generateStars();
 
-    // ── OPEN GAME — about:blank trick ──
+    // ── OPEN MODULE — about:blank trick ──
     function openGame(file) {
       var win = window.open('about:blank', '_blank');
       if (file.startsWith('http')) {
@@ -383,10 +374,10 @@
     window.onpageshow = function(e) { if (e.persisted) window.location.reload(); };
 
     // ── SEARCH ──
-    var cards = document.querySelectorAll('.game-card');
-    var countEl = document.getElementById('game-count');
+    var cards = document.querySelectorAll('.module-card');
+    var countEl = document.getElementById('module-count');
     var noResults = document.getElementById('no-results');
-    countEl.textContent = cards.length + ' GAMES';
+    countEl.textContent = cards.length + ' module';
 
     document.getElementById('search-input').addEventListener('input', function() {
       var q = this.value.trim().toLowerCase();
@@ -398,8 +389,8 @@
       });
       noResults.style.display = visible === 0 ? 'block' : 'none';
       countEl.textContent = q
-        ? visible + ' GAME' + (visible !== 1 ? 'S' : '') + ' FOUND'
-        : cards.length + ' GAMES';
+        ? visible + ' module' + (visible !== 1 ? 'S' : '') + ' FOUND'
+        : cards.length + ' modules';
     });
   </script>
 </body>
