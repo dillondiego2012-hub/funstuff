@@ -59,65 +59,61 @@
 
     #search-input {
       background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 5px; /* Less "fancy" looking */
+      border: 2px solid rgba(180,100,255,0.45);
+      border-radius: 30px;
       color: #fff;
-      font-size: 16px;
-      padding: 10px 15px;
-      width: 250px;
+      font-size: 20px;
+      padding: 14px 28px;
+      width: 300px;
       outline: none;
+      transition: 0.3s;
       backdrop-filter: blur(8px);
     }
 
     #header { position: relative; z-index: 10; margin-top: 10px; }
-    #save-reminder { font-size: 24px; color: rgba(255,255,255,0.6); margin-bottom: 5px; }
-    h1 { font-size: 48px; margin-bottom: 10px; cursor: pointer; }
-    #clock { font-size: 32px; margin-bottom: 10px; opacity: 0.8; }
-    #module-count { font-size: 12px; color: rgba(200,170,255,0.4); margin-bottom: 40px; }
+    #save-reminder { font-size: 28px; color: rgba(255,255,255,0.7); margin-bottom: 5px; }
+    h1 { font-size: 52px; margin-bottom: 10px; cursor: pointer; text-shadow: 0 0 20px purple; }
+    #clock { font-size: 40px; margin-bottom: 10px; }
+    #module-count { font-size: 14px; color: rgba(200,170,255,0.5); letter-spacing: 3px; margin-bottom: 30px; }
 
     .modules-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 35px; /* Wider gap for "misplaced" look */
-      padding: 20px 24px 100px;
+      gap: 20px;
+      padding: 0 24px 70px;
       position: relative;
       z-index: 10;
-      max-width: 1300px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
     .module-card.hidden { display: none; }
 
-    /* Misplaced Button Styles */
     .module-btn {
-      width: 320px;
-      padding: 18px 12px;
-      font-size: 18px;
+      width: 350px;
+      padding: 22px 15px;
+      font-size: 20px;
       font-weight: bold;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 4px;
+      border: none;
+      border-radius: 15px;
       background: #1e293b; /* Solid Navy Blue */
-      color: #cbd5e1;
+      color: white;
       cursor: pointer;
-      transition: transform 0.2s;
-      text-align: left;
-      /* Randomization via nth-child classes below */
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      transition: 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .module-btn:hover {
       background: #334155;
-      color: #fff;
-      transform: scale(1.02) !important; /* Override the "misplaced" tilt on hover */
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(255,255,255,0.25);
     }
 
-    /* Manually adding some "out of place" offsets */
-    .module-card:nth-child(odd) .module-btn { transform: rotate(-1.5deg) translateY(10px); }
-    .module-card:nth-child(even) .module-btn { transform: rotate(1deg) translateX(-5px); }
-    .module-card:nth-child(3n) .module-btn { transform: translateY(-15px) rotate(0.5deg); margin-left: 20px; }
-    .module-card:nth-child(4n) .module-btn { transform: rotate(-0.8deg); margin-right: 15px; }
-
-    #no-results { display: none; font-size: 20px; color: grey; margin-top: 50px; }
+    #no-results { display: none; font-size: 24px; color: rgba(255,255,255,0.4); margin-top: 50px; }
   </style>
 </head>
 <body>
@@ -125,17 +121,17 @@
   <div id="galaxy"></div>
 
   <div id="top-nav">
-    <input type="text" id="search-input" placeholder="Find module..." autocomplete="off">
+    <input type="text" id="search-input" placeholder="🔍 Search Curriculum..." autocomplete="off">
   </div>
 
   <div id="header">
-    <div id="save-reminder">Use CTRL+D to save curriculum.</div>
+    <div id="save-reminder">⌨️ CTRL+D to Save Review Hub!</div>
     <h1 onclick="location.reload()">📐 STAAR Review Hub</h1>
     <div id="clock"></div>
     <div id="module-count"></div>
   </div>
 
-  <div id="no-results">Search returned 0 results.</div>
+  <div id="no-results">No modules found 🔭</div>
 
   <div class="modules-grid" id="main-grid">
     <div class="module-card" data-name="Retro Bowl College"><button class="module-btn" onclick="openModule('clretrobowlcollege.html')">Advanced Playbook Calculus</button></div>
@@ -192,4 +188,57 @@
     <div class="module-card" data-name="Baseball Bros"><button class="module-btn" onclick="openModule('clbaseballbros.html')">Trajectory Mechanics A</button></div>
     <div class="module-card" data-name="Rooftop Snipers 2"><button class="module-btn" onclick="openModule('clrooftopsnipers2.html')">Two-Dimensional Angle Plots</button></div>
     <div class="module-card" data-name="Level Devil"><button class="module-btn" onclick="openModule('clleveldevil.html')">Variable Chaos Theorems</button></div>
-    <div class="module-card" data-name="Cluster Rush"><button class="module-btn" onclick="openModule('clclusterrush.html
+    <div class="module-card" data-name="Cluster Rush"><button class="module-btn" onclick="openModule('clclusterrush.html')">Velocity Momentum Test</button></div>
+    <div class="module-card" data-name="Bit Planes"><button class="module-btn" onclick="openModule('clbitplanes.html')">Vector Plane Geometry</button></div>
+  </div>
+
+  <script>
+    function generateStars() {
+      const galaxy = document.getElementById('galaxy');
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        galaxy.appendChild(star);
+      }
+    }
+    generateStars();
+
+    function openModule(file) {
+      const win = window.open('about:blank', '_blank');
+      fetch(file).then(r => r.text()).then(html => {
+        win.document.open();
+        win.document.write(html);
+        win.document.close();
+      }).catch(() => win.location.href = file);
+    }
+
+    function updateClock() {
+      const now = new Date();
+      let h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      document.getElementById('clock').innerText = `${h<10?'0':''}${h}:${m<10?'0':''}${m}:${s<10?'0':''}${s} ${ampm}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const cards = document.querySelectorAll('.module-card');
+    document.getElementById('module-count').textContent = `${cards.length} MODULES LOADED`;
+
+    document.getElementById('search-input').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      let visible = 0;
+      cards.forEach(c => {
+        const match = c.innerText.toLowerCase().includes(q) || c.dataset.name.toLowerCase().includes(q);
+        c.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+      document.getElementById('module-count').textContent = `${visible} MODULES LOADED`;
+    });
+  </script>
+</body>
+</html>
