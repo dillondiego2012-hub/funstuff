@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0H7S7TJBPK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -28,7 +27,7 @@
     }
 
     /* ═══════════════════════════════════════
-       GALAXY BACKGROUND
+        GALAXY BACKGROUND
     ═══════════════════════════════════════ */
     #galaxy {
       position: fixed;
@@ -78,41 +77,18 @@
     }
 
     /* ═══════════════════════════════════════
-       TOP NAV
+        TOP NAV
     ═══════════════════════════════════════ */
     #top-nav {
       position: relative;
-      z-index: 10;
+      z-index: 20;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end; /* Pushes search to the right */
       padding: 24px 36px 0;
       width: 100%;
     }
 
-    #request-link {
-      font-size: 20px;
-      font-weight: bold;
-      color: #d4aaff;
-      text-decoration: none;
-      background: rgba(120,0,255,0.18);
-      border: 2px solid rgba(180,100,255,0.45);
-      border-radius: 30px;
-      padding: 14px 28px;
-      transition: 0.25s;
-      white-space: nowrap;
-      backdrop-filter: blur(8px);
-      text-shadow: 0 0 10px rgba(180,100,255,0.6);
-    }
-    #request-link:hover {
-      background: rgba(120,0,255,0.35);
-      border-color: rgba(200,150,255,0.8);
-      color: #fff;
-      box-shadow: 0 0 20px rgba(160,80,255,0.5);
-      transform: scale(1.05);
-    }
-
-    /* ── SEARCH ── */
     #search-wrap {
       position: relative;
       display: flex;
@@ -144,254 +120,15 @@
     }
 
     /* ═══════════════════════════════════════
-       HEADER
+        HEADER
     ═══════════════════════════════════════ */
     #header {
       position: relative;
       z-index: 10;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     #save-reminder {
-      font-size: 40px;
+      font-size: 30px;
       margin-bottom: 6px;
-      color: rgba(255,255,255,0.75);
-      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
-      letter-spacing: 1px;
-    }
-
-    h1 {
-      font-size: 52px;
-      margin: 0 0 10px;
-      text-shadow: 0 0 30px rgba(180,100,255,0.7), 0 2px 8px rgba(0,0,0,0.9);
-      cursor: pointer;
-      user-select: none;
-      transition: text-shadow 0.2s, transform 0.2s;
-      display: inline-block;
-    }
-    h1:hover {
-      text-shadow: 0 0 50px rgba(220,160,255,1), 0 2px 8px rgba(0,0,0,0.9);
-      transform: scale(1.04);
-    }
-
-    #clock {
-      font-size: 40px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
-    }
-    #game-count {
-      font-size: 14px;
-      color: rgba(200,170,255,0.5);
-      letter-spacing: 3px;
-      margin-bottom: 30px;
-    }
-
-    /* ═══════════════════════════════════════
-       GAMES GRID
-    ═══════════════════════════════════════ */
-    .games-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 0 24px 70px;
-      position: relative;
-      z-index: 10;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .game-card.hidden { display: none; }
-
-    .game-btn {
-      padding: 22px 70px;
-      font-size: 28px;
-      border: none;
-      border-radius: 15px;
-      background: #1e293b;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-    .game-btn:hover {
-      background: #334155;
-      transform: scale(1.12);
-      box-shadow: 0 0 30px rgba(255,255,255,0.6);
-    }
-
-    #no-results {
-      display: none;
-      font-size: 24px;
-      color: rgba(255,255,255,0.4);
-      margin: 70px 0;
-      position: relative;
-      z-index: 10;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- GALAXY BACKGROUND -->
-  <div id="galaxy"></div>
-
-
-<div id="search-wrap">
-      <input type="text" id="search-input" placeholder="🔍 Search Modules..." autocomplete="off">
-    </div>
-  </div>
-
-  <!-- HEADER — title is a home button -->
-  <div id="header">
-    <div id="save-reminder">⌨️ CTRL+D to Save Review Hub!</div>
-    <h1 onclick="goHome()" title="Back to home">📐STAAR Review Hub</h1>
-    <div id="clock"></div>
-    <div id="game-count"></div>
-  </div>
-
-  <div id="no-results">No games found 🔭</div>
-
-  <!-- GAMES GRID — ABC ORDER -->
-  <div class="games-grid">
-    <div class="game-card" data-name="1v1.LOL"><button class="game-btn" onclick="openGame('cl1v1lol.html')">1v1.LOL</button></div>
-    <div class="game-card" data-name="3Dash"><button class="game-btn" onclick="openGame('cl3dash.html')">3Dash</button></div>
-    <div class="game-card" data-name="A Small World Cup"><button class="game-btn" onclick="openGame('clasmallworldcup.html')">A Small World Cup</button></div>
-    <div class="game-card" data-name="Agar.io Lite"><button class="game-btn" onclick="openGame('clagariolite.html')">Agar.io Lite</button></div>
-    <div class="game-card" data-name="Apes vs Helium"><button class="game-btn" onclick="openGame('clapesvshelium.html')">Apes vs Helium</button></div>
-    <div class="game-card" data-name="Baseball Bros"><button class="game-btn" onclick="openGame('clbaseballbros.html')">Baseball Bros</button></div>
-    <div class="game-card" data-name="Basket Bros"><button class="game-btn" onclick="openGame('clbasketbros.html')">Basket Bros</button></div>
-    <div class="game-card" data-name="Basketball Stars"><button class="game-btn" onclick="openGame('clbasketballstars.html')">Basketball Stars</button></div>
-    <div class="game-card" data-name="Bit Planes"><button class="game-btn" onclick="openGame('clbitplanes.html')">Bit Planes</button></div>
-    <div class="game-card" data-name="BitLife"><button class="game-btn" onclick="openGame('clbitlife.html')">BitLife</button></div>
-    <div class="game-card" data-name="Block Blast"><button class="game-btn" onclick="openGame('clblockblastv2.html')">Block Blast</button></div>
-    <div class="game-card" data-name="Cluster Rush"><button class="game-btn" onclick="openGame('clclusterrush.html')">Cluster Rush</button></div>
-    <div class="game-card" data-name="Cookie Clicker"><button class="game-btn" onclick="openGame('clcookieclicker.html')">Cookie Clicker</button></div>
-    <div class="game-card" data-name="Core Ball"><button class="game-btn" onclick="openGame('clcoreball.html')">Core Ball</button></div>
-    <div class="game-card" data-name="Crazy Cattle 3D"><button class="game-btn" onclick="openGame('clcrazycattle3d.html')">Crazy Cattle 3D</button></div>
-    <div class="game-card" data-name="Crossy Road"><button class="game-btn" onclick="openGame('clcrossyroad.html')">Crossy Road</button></div>
-    <div class="game-card" data-name="Drift Boss"><button class="game-btn" onclick="openGame('cldriftboss.html')">Drift Boss</button></div>
-    <div class="game-card" data-name="Drift Hunters"><button class="game-btn" onclick="openGame('cldrifthuntersmerge.html')">Drift Hunters</button></div>
-    <div class="game-card" data-name="Drive Mad"><button class="game-btn" onclick="openGame('cldrivemady.html')">Drive Mad</button></div>
-    <div class="game-card" data-name="Escape Road City 2"><button class="game-btn" onclick="openGame('clescaperoadcity2.html')">Escape Road City 2</button></div>
-    <div class="game-card" data-name="FNAF"><button class="game-btn" onclick="openGame('clFNAF.html')">FNAF</button></div>
-    <div class="game-card" data-name="FNAF 2"><button class="game-btn" onclick="openGame('clFNAF2.html')">FNAF 2</button></div>
-    <div class="game-card" data-name="FNAF 3"><button class="game-btn" onclick="openGame('clFNAF3.html')">FNAF 3</button></div>
-    <div class="game-card" data-name="FNAF 4"><button class="game-btn" onclick="openGame('clFNAF4.html')">FNAF 4</button></div>
-    <div class="game-card" data-name="Football Bros"><button class="game-btn" onclick="openGame('clfootballbros.html')">Football Bros</button></div>
-    <div class="game-card" data-name="GD SubZero"><button class="game-btn" onclick="openGame('clgdsubzero.html')">GD SubZero</button></div>
-    <div class="game-card" data-name="GD World"><button class="game-btn" onclick="openGame('clGeometryDashWorld.html')">GD World</button></div>
-    <div class="game-card" data-name="Geometry Dash Lite"><button class="game-btn" onclick="openGame('clgdlite.html')">Geometry Dash Lite</button></div>
-    <div class="game-card" data-name="Granny 2"><button class="game-btn" onclick="openGame('clgranny22.html')">Granny 2</button></div>
-    <div class="game-card" data-name="Granny 3"><button class="game-btn" onclick="openGame('clgranny3.html')">Granny 3</button></div>
-    <div class="game-card" data-name="Granny Original"><button class="game-btn" onclick="openGame('clgrannyy.html')">Granny Original</button></div>
-    <div class="game-card" data-name="Gun Spin"><button class="game-btn" onclick="openGame('clgunspin.html')">Gun Spin</button></div>
-    <div class="game-card" data-name="Karate Bros"><button class="game-btn" onclick="openGame('clkaratebros.html')">Karate Bros</button></div>
-    <div class="game-card" data-name="Kart Bros"><button class="game-btn" onclick="openGame('clkartbros.html')">Kart Bros</button></div>
-    <div class="game-card" data-name="Learn to Fly"><button class="game-btn" onclick="openGame('cllearntofly.html')">Learn to Fly</button></div>
-    <div class="game-card" data-name="Level Devil"><button class="game-btn" onclick="openGame('clleveldevil.html')">Level Devil</button></div>
-    <div class="game-card" data-name="Monkey Mart"><button class="game-btn" onclick="openGame('clmonkeymart.html')">Monkey Mart</button></div>
-    <div class="game-card" data-name="Moto X3M"><button class="game-btn" onclick="openGame('clmotox3mm.html')">Moto X3M</button></div>
-    <div class="game-card" data-name="OvO"><button class="game-btn" onclick="openGame('clovofixed.html')">OvO</button></div>
-    <div class="game-card" data-name="Pizza Tower"><button class="game-btn" onclick="openGame('clpizzatower.html')">Pizza Tower</button></div>
-    <div class="game-card" data-name="Poly Track"><button class="game-btn" onclick="openGame('clpolytrackworksnow.html')">Poly Track</button></div>
-    <div class="game-card" data-name="Retro Bowl"><button class="game-btn" onclick="openGame('clretrobowl.html')">Retro Bowl</button></div>
-    <div class="game-card" data-name="Retro Bowl College"><button class="game-btn" onclick="openGame('clretrobowlcollege.html')">Retro Bowl College</button></div>
-    <div class="game-card" data-name="Rocket League"><button class="game-btn" onclick="openGame('clrocketleague.html')">Rocket League</button></div>
-    <div class="game-card" data-name="Rooftop Snipers 2"><button class="game-btn" onclick="openGame('clrooftopsnipers2.html')">Rooftop Snipers 2</button></div>
-    <div class="game-card" data-name="Run 3"><button class="game-btn" onclick="openGame('clrun3.html')">Run 3</button></div>
-    <div class="game-card" data-name="Snow Rider 3D"><button class="game-btn" onclick="openGame('clsnowrider.html')">Snow Rider 3D</button></div>
-    <div class="game-card" data-name="Soccer Bros"><button class="game-btn" onclick="openGame('clsoccerbros.html')">Soccer Bros</button></div>
-    <div class="game-card" data-name="Soccer Random"><button class="game-btn" onclick="openGame('clsoccerrandomgood.html')">Soccer Random</button></div>
-    <div class="game-card" data-name="Space Waves"><button class="game-btn" onclick="openGame('clspacewaves.html')">Space Waves</button></div>
-    <div class="game-card" data-name="Subway Surfers Houston"><button class="game-btn" onclick="openGame('clsubwaysurfershouston.html')">Subway Surfers Houston</button></div>
-    <div class="game-card" data-name="Super Liquid Soccer"><button class="game-btn" onclick="openGame('clsuperliquidsoccer.html')">Super Liquid Soccer</button></div>
-    <div class="game-card" data-name="Survival Race"><button class="game-btn" onclick="openGame('clcarkingarena.html')">Survival Race</button></div>
-    <div class="game-card" data-name="Tiny Fishing"><button class="game-btn" onclick="openGame('cltinyfishing.html')">Tiny Fishing</button></div>
-    <div class="game-card" data-name="Tunnel Rush"><button class="game-btn" onclick="openGame('cltunnelrushbetter.html')">Tunnel Rush</button></div>
-    <div class="game-card" data-name="Wrestle Bros"><button class="game-btn" onclick="openGame('clwrestlebros.html')">Wrestle Bros</button></div>
-  </div>
-
-  <script>
-    // ── STARS ──
-    function generateStars() {
-      var galaxy = document.getElementById('galaxy');
-      for (var i = 0; i < 150; i++) {
-        var star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        galaxy.appendChild(star);
-      }
-    }
-    generateStars();
-
-    // ── OPEN MODULE — about:blank trick ──
-    function openGame(file) {
-      var win = window.open('about:blank', '_blank');
-      if (file.startsWith('http')) {
-        win.location.href = file;
-        return;
-      }
-      fetch(file)
-        .then(function(r) { return r.text(); })
-        .then(function(html) {
-          win.document.open();
-          win.document.write(html);
-          win.document.close();
-        })
-        .catch(function() {
-          win.location.href = file;
-        });
-    }
-
-    // ── HOME BUTTON (title click) ──
-    function goHome() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.getElementById('search-input').value = '';
-      document.querySelectorAll('.game-card').forEach(function(c) {
-        c.classList.remove('hidden');
-      });
-      document.getElementById('game-count').textContent =
-        document.querySelectorAll('.game-card').length + ' GAMES';
-      document.getElementById('no-results').style.display = 'none';
-    }
-
-    // ── CLOCK ──
-    function updateClock() {
-      var now = new Date();
-      var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
-      var ampm = h >= 12 ? 'PM' : 'AM';
-      h = h % 12 || 12;
-      document.getElementById('clock').innerText =
-        (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s+' '+ampm;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // ── BACK BUTTON RELOAD ──
-    window.onpageshow = function(e) { if (e.persisted) window.location.reload(); };
-
-    // ── SEARCH ──
-    var cards = document.querySelectorAll('.module-card');
-    var countEl = document.getElementById('module-count');
-    var noResults = document.getElementById('no-results');
-    countEl.textContent = cards.length + ' module';
-
-    document.getElementById('search-input').addEventListener('input', function() {
-      var q = this.value.trim().toLowerCase();
-      var visible = 0;
-      cards.forEach(function(c) {
-        var match = !q || c.getAttribute('data-name').toLowerCase().includes(q);
-        c.classList.toggle('hidden', !match);
-        if (match) visible++;
-      });
-      noResults.style.display = visible === 0 ? 'block' : 'none';
-      countEl.textContent = q
-        ? visible + ' module' + (visible !== 1 ? 'S' : '') + ' FOUND'
-        : cards.length + ' modules';
-    });
-  </script>
-</body>
-</html>
+      color: rgba(2
