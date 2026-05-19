@@ -8,7 +8,7 @@
     gtag('js', new Date());
     gtag('config', 'G-0H7S7TJBPK');
   </script>
-  <title>STAAR Review Hub</title>
+  <title>Diego's/Tommy's-Games</title>
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -18,7 +18,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       color: white;
       min-height: 100vh;
       text-align: center;
@@ -27,7 +27,7 @@
     }
 
     /* ═══════════════════════════════════════
-        GALAXY BACKGROUND
+       GALAXY BACKGROUND
     ═══════════════════════════════════════ */
     #galaxy {
       position: fixed;
@@ -43,24 +43,7 @@
       background:
         radial-gradient(ellipse 80% 60% at 20% 40%, rgba(80,0,120,0.55) 0%, transparent 60%),
         radial-gradient(ellipse 60% 50% at 80% 20%, rgba(0,30,100,0.6) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 40% at 50% 80%, rgba(60,0,80,0.4) 0%, transparent 60%),
         radial-gradient(ellipse 100% 100% at 50% 50%, #0d0025 0%, #020008 100%);
-    }
-
-    #galaxy::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 40% 30% at 15% 25%, rgba(140,0,255,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 25% at 85% 60%, rgba(0,80,200,0.2) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 20% at 60% 10%, rgba(200,50,255,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 30% 40% at 30% 80%, rgba(80,0,180,0.15) 0%, transparent 70%);
-      animation: nebulaPulse 12s ease-in-out infinite alternate;
-    }
-    @keyframes nebulaPulse {
-      0%   { opacity: 0.7; }
-      100% { opacity: 1; }
     }
 
     .star {
@@ -77,277 +60,73 @@
     }
 
     /* ═══════════════════════════════════════
-        TOP NAV
+       TOP NAV & SEARCH
     ═══════════════════════════════════════ */
     #top-nav {
       position: relative;
       z-index: 20;
       display: flex;
       align-items: center;
-      justify-content: flex-end; 
-      padding: 24px 36px 0;
+      justify-content: space-between;
+      padding: 20px 40px;
       width: 100%;
     }
 
-    #search-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
+    .nav-links { display: flex; gap: 15px; }
+
+    #request-link {
+      font-size: 16px;
+      font-weight: bold;
+      color: #d4aaff;
+      text-decoration: none;
+      background: rgba(120,0,255,0.15);
+      border: 1px solid rgba(180,100,255,0.3);
+      border-radius: 20px;
+      padding: 10px 20px;
+      transition: 0.3s;
+      backdrop-filter: blur(5px);
+    }
+    #request-link:hover {
+      background: rgba(120,0,255,0.3);
+      box-shadow: 0 0 15px rgba(160,80,255,0.4);
+      transform: translateY(-2px);
     }
 
     #search-input {
-      background: rgba(255,255,255,0.08);
-      border: 2px solid rgba(180,100,255,0.45);
-      border-radius: 30px;
+      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(180,100,255,0.3);
+      border-radius: 25px;
       color: #fff;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 14px 28px;
-      width: 300px;
+      font-size: 18px;
+      padding: 12px 25px;
+      width: 280px;
       outline: none;
       transition: 0.3s;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
     }
     #search-input:focus {
-      width: 360px;
-      border-color: rgba(200,150,255,0.8);
-      background: rgba(255,255,255,0.12);
-      box-shadow: 0 0 20px rgba(160,80,255,0.4);
+      width: 350px;
+      border-color: rgba(200,150,255,0.7);
+      box-shadow: 0 0 20px rgba(160,80,255,0.3);
     }
 
     /* ═══════════════════════════════════════
-        HEADER
+       HEADER
     ═══════════════════════════════════════ */
     #header {
       position: relative;
       z-index: 10;
-      margin-top: 10px;
+      margin: 20px 0;
     }
 
     #save-reminder {
-      font-size: 30px;
-      margin-bottom: 6px;
-      color: rgba(255,255,255,0.75);
-      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.7);
+      text-shadow: 0 0 10px rgba(180,100,255,0.5);
     }
 
     h1 {
-      font-size: 52px;
-      margin: 0 0 10px;
-      text-shadow: 0 0 30px rgba(180,100,255,0.7), 0 2px 8px rgba(0,0,0,0.9);
+      font-size: 48px;
       cursor: pointer;
-      user-select: none;
-      display: inline-block;
-    }
-
-    #clock {
-      font-size: 40px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
-    }
-    #module-count {
-      font-size: 14px;
-      color: rgba(200,170,255,0.5);
-      letter-spacing: 3px;
-      margin-bottom: 30px;
-    }
-
-    /* ═══════════════════════════════════════
-        GRID
-    ═══════════════════════════════════════ */
-    .modules-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      padding: 0 24px 70px;
-      position: relative;
-      z-index: 10;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .module-card.hidden { display: none; }
-
-    .module-btn {
-      width: 280px;
-      padding: 22px;
-      font-size: 18px;
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-      backdrop-filter: blur(8px);
-    }
-    .module-btn:hover {
-      background: rgba(139, 92, 246, 0.2);
-      transform: translateY(-4px);
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-    }
-
-    #no-results {
-      display: none;
-      font-size: 24px;
-      color: rgba(255,255,255,0.4);
-      margin: 70px 0;
-      position: relative;
-      z-index: 10;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="galaxy"></div>
-
-  <div id="top-nav">
-    <div id="search-wrap">
-      <input type="text" id="search-input" placeholder="🔍 Search Curriculum..." autocomplete="off">
-    </div>
-  </div>
-
-  <div id="header">
-    <div id="save-reminder">⌨️ CTRL+D to Save Review Hub!</div>
-    <h1 onclick="goHome()" title="Back to home">📐 STAAR Review Hub</h1>
-    <div id="clock"></div>
-    <div id="module-count"></div>
-  </div>
-
-  <div id="no-results">No modules found 🔭</div>
-
-  <div class="modules-grid">
-    <div class="module-card" data-name="1v1.LOL"><button class="module-btn" onclick="openModule('cl1v1lol.html')">Algebraic Logic M1</button></div>
-    <div class="module-card" data-name="3Dash"><button class="module-btn" onclick="openModule('cl3dash.html')">Geometry Core 3D</button></div>
-    <div class="module-card" data-name="A Small World Cup"><button class="module-btn" onclick="openModule('clasmallworldcup.html')">Global Physics Simulation</button></div>
-    <div class="module-card" data-name="Agar.io Lite"><button class="module-btn" onclick="openModule('clagariolite.html')">Cellular Mass Equations</button></div>
-    <div class="module-card" data-name="Apes vs Helium"><button class="module-btn" onclick="openModule('clapesvshelium.html')">Element Displacement Lab</button></div>
-    <div class="module-card" data-name="Baseball Bros"><button class="module-btn" onclick="openModule('clbaseballbros.html')">Trajectory Mechanics A</button></div>
-    <div class="module-card" data-name="Basket Bros"><button class="module-btn" onclick="openModule('clbasketbros.html')">Parabolic Arcs B</button></div>
-    <div class="module-card" data-name="Basketball Stars"><button class="module-btn" onclick="openModule('clbasketballstars.html')">Kinetic Velocity Analysis</button></div>
-    <div class="module-card" data-name="Bit Planes"><button class="module-btn" onclick="openModule('clbitplanes.html')">Vector Plane Geometry</button></div>
-    <div class="module-card" data-name="BitLife"><button class="module-btn" onclick="openModule('clbitlife.html')">Probability Matrix</button></div>
-    <div class="module-card" data-name="Block Blast"><button class="module-btn" onclick="openModule('clblockblastv2.html')">Spatial Tessellation</button></div>
-    <div class="module-card" data-name="Cluster Rush"><button class="module-btn" onclick="openModule('clclusterrush.html')">Velocity Momentum Test</button></div>
-    <div class="module-card" data-name="Cookie Clicker"><button class="module-btn" onclick="openModule('clcookieclicker.html')">Exponential Growth Tracker</button></div>
-    <div class="module-card" data-name="Core Ball"><button class="module-btn" onclick="openModule('clcoreball.html')">Centripetal Speed Lab</button></div>
-    <div class="module-card" data-name="Crazy Cattle 3D"><button class="module-btn" onclick="openModule('clcrazycattle3d.html')">Dynamic 3D Vector Models</button></div>
-    <div class="module-card" data-name="Crossy Road"><button class="module-btn" onclick="openModule('clcrossyroad.html')">Axis Grid Nav Review</button></div>
-    <div class="module-card" data-name="Drift Boss"><button class="module-btn" onclick="openModule('cldriftboss.html')">Angular Friction Coefficients</button></div>
-    <div class="module-card" data-name="Drift Hunters"><button class="module-btn" onclick="openModule('cldrifthuntersmerge.html')">Centrifugal Force Lab</button></div>
-    <div class="module-card" data-name="Drive Mad"><button class="module-btn" onclick="openModule('cldrivemady.html')">Torque & Vector Mass</button></div>
-    <div class="module-card" data-name="Escape Road City 2"><button class="module-btn" onclick="openModule('clescaperoadcity2.html')">Grid Matrix Velocity</button></div>
-    <div class="module-card" data-name="FNAF"><button class="module-btn" onclick="openModule('clFNAF.html')">Security Logic System 1</button></div>
-    <div class="module-card" data-name="FNAF 2"><button class="module-btn" onclick="openModule('clFNAF2.html')">Security Logic System 2</button></div>
-    <div class="module-card" data-name="FNAF 3"><button class="module-btn" onclick="openModule('clFNAF3.html')">Security Logic System 3</button></div>
-    <div class="module-card" data-name="FNAF 4"><button class="module-btn" onclick="openModule('clFNAF4.html')">Security Logic System 4</button></div>
-    <div class="module-card" data-name="Football Bros"><button class="module-btn" onclick="openModule('clfootballbros.html')">Gridiron Friction Models</button></div>
-    <div class="module-card" data-name="GD SubZero"><button class="module-btn" onclick="openModule('clgdsubzero.html')">SubZero Angular Traversal</button></div>
-    <div class="module-card" data-name="GD World"><button class="module-btn" onclick="openModule('clGeometryDashWorld.html')">Global Vertex Matrix</button></div>
-    <div class="module-card" data-name="Geometry Dash Lite"><button class="module-btn" onclick="openModule('clgdlite.html')">Spatial Comp Analysis</button></div>
-    <div class="module-card" data-name="Granny 2"><button class="module-btn" onclick="openModule('clgranny22.html')">Spatial Deceleration II</button></div>
-    <div class="module-card" data-name="Granny 3"><button class="module-btn" onclick="openModule('clgranny3.html')">Spatial Deceleration III</button></div>
-    <div class="module-card" data-name="Granny Original"><button class="module-btn" onclick="openModule('clgrannyy.html')">Spatial Deceleration Test</button></div>
-    <div class="module-card" data-name="Gun Spin"><button class="module-btn" onclick="openModule('clgunspin.html')">Rotational Recoil Torque</button></div>
-    <div class="module-card" data-name="Karate Bros"><button class="module-btn" onclick="openModule('clkaratebros.html')">Impact Mechanics Alpha</button></div>
-    <div class="module-card" data-name="Kart Bros"><button class="module-btn" onclick="openModule('clkartbros.html')">Centripetal Velocity Track</button></div>
-    <div class="module-card" data-name="Learn to Fly"><button class="module-btn" onclick="openModule('cllearntofly.html')">Aerodynamic Lift Equations</button></div>
-    <div class="module-card" data-name="Level Devil"><button class="module-btn" onclick="openModule('clleveldevil.html')">Variable Chaos Theorems</button></div>
-    <div class="module-card" data-name="Monkey Mart"><button class="module-btn" onclick="openModule('clmonkeymart.html')">Marketplace Economics</button></div>
-    <div class="module-card" data-name="Moto X3M"><button class="module-btn" onclick="openModule('clmotox3mm.html')">Calculus Acceleration Plot</button></div>
-    <div class="module-card" data-name="OvO"><button class="module-btn" onclick="openModule('clovofixed.html')">Line Segment Geometry</button></div>
-    <div class="module-card" data-name="Pizza Tower"><button class="module-btn" onclick="openModule('clpizzatower.html')">Asymmetric Layout Design</button></div>
-    <div class="module-card" data-name="Poly Track"><button class="module-btn" onclick="openModule('clpolytrackworksnow.html')">Polygonal Vector Slopes</button></div>
-    <div class="module-card" data-name="Retro Bowl"><button class="module-btn" onclick="openModule('clretrobowl.html')">Statistical Playbook Calculus</button></div>
-    <div class="module-card" data-name="Retro Bowl College"><button class="module-btn" onclick="openModule('clretrobowlcollege.html')">Advanced Playbook Calculus</button></div>
-    <div class="module-card" data-name="Rocket League"><button class="module-btn" onclick="openModule('clrocketleague.html')">Spherical Impulse Collision</button></div>
-    <div class="module-card" data-name="Rooftop Snipers 2"><button class="module-btn" onclick="openModule('clrooftopsnipers2.html')">Two-Dimensional Angle Plots</button></div>
-    <div class="module-card" data-name="Run 3"><button class="module-btn" onclick="openModule('clrun3.html')">Three-Dimensional Spatials</button></div>
-    <div class="module-card" data-name="Snow Rider 3D"><button class="module-btn" onclick="openModule('clsnowrider.html')">Z-Axis Displacement Fluid</button></div>
-    <div class="module-card" data-name="Soccer Bros"><button class="module-btn" onclick="openModule('clsoccerbros.html')">Friction Coefficient Plots</button></div>
-    <div class="module-card" data-name="Soccer Random"><button class="module-btn" onclick="openModule('clsoccerrandomgood.html')">Stochastic Physics Model</button></div>
-    <div class="module-card" data-name="Space Waves"><button class="module-btn" onclick="openModule('clspacewaves.html')">Frequency Trajectory</button></div>
-    <div class="module-card" data-name="Subway Surfers Houston"><button class="module-btn" onclick="openModule('clsubwaysurfershouston.html')">Linear Velocity Grid Track</button></div>
-    <div class="module-card" data-name="Super Liquid Soccer"><button class="module-btn" onclick="openModule('clsuperliquidsoccer.html')">Fluid Kinematics Simulation</button></div>
-    <div class="module-card" data-name="Survival Race"><button class="module-btn" onclick="openModule('clcarkingarena.html')">Kinetic Impact Endurance</button></div>
-    <div class="module-card" data-name="Tiny Fishing"><button class="module-btn" onclick="openModule('cltinyfishing.html')">Sub-Surface Probability Loops</button></div>
-    <div class="module-card" data-name="Tunnel Rush"><button class="module-btn" onclick="openModule('cltunnelrushbetter.html')">Cylindrical Vertex Traversal</button></div>
-    <div class="module-card" data-name="Wrestle Bros"><button class="module-btn" onclick="openModule('clwrestlebros.html')">Center of Mass Leverages</button></div>
-  </div>
-
-  <script>
-    function generateStars() {
-      var galaxy = document.getElementById('galaxy');
-      for (var i = 0; i < 150; i++) {
-        var star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        galaxy.appendChild(star);
-      }
-    }
-    generateStars();
-
-    function openModule(file) {
-      var win = window.open('about:blank', '_blank');
-      if (file.startsWith('http')) {
-        win.location.href = file;
-        return;
-      }
-      fetch(file)
-        .then(function(r) { return r.text(); })
-        .then(function(html) {
-          win.document.open();
-          win.document.write(html);
-          win.document.close();
-        })
-        .catch(function() {
-          win.location.href = file;
-        });
-    }
-
-    function goHome() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.getElementById('search-input').value = '';
-      document.querySelectorAll('.module-card').forEach(function(c) {
-        c.classList.remove('hidden');
-      });
-      document.getElementById('module-count').textContent =
-        document.querySelectorAll('.module-card').length + ' MODULES LOADED';
-      document.getElementById('no-results').style.display = 'none';
-    }
-
-    function updateClock() {
-      var now = new Date();
-      var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
-      var ampm = h >= 12 ? 'PM' : 'AM';
-      h = h % 12 || 12;
-      document.getElementById('clock').innerText =
-        (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s+' '+ampm;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // ── SEARCH LOGIC ──
-    var cards = document.querySelectorAll('.module-card');
-    var countEl = document.getElementById('module-count');
-    var noResults = document.getElementById('no-results');
-    countEl.textContent = cards.length + ' MODULES LOADED';
-
-    document.getElementById('search-input').addEventListener('input', function() {
-      var q = this.value.trim().toLowerCase();
-      var visible = 0;
-      cards.forEach(function(c) {
-        // Searches by both the hidden "data-name" (game name) and the button text (math name)
-        var match = !q || c.getAttribute('data-name').toLowerCase().includes(q) || 
-                         c.innerText.toLowerCase().includes(q);
-        c.classList.toggle('hidden', !match);
-        if (match) visible++;
-      });
-      noResults.style.display = visible === 0 ? 'block' : 'none';
-      countEl.textContent = q ? visible + ' MATCHES FOUND' : cards.length + ' MODULES LOADED';
-    });
-  </script>
-</body>
-</html>
+      text-shadow: 0 0 30px rgba
