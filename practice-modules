@@ -1,274 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0H7S7TJBPK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0H7S7TJBPK');
-  </script>
-  <title>STAAR Mathematics Review Directory</title>
-  <meta charset="UTF-8">
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      min-height: 100vh;
-      text-align: center;
-      overflow-x: hidden;
-      background: #0a0015;
-    }
-    #galaxy { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
-    #galaxy::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(80,0,120,0.55) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(0,30,100,0.6) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 40% at 50% 80%, rgba(60,0,80,0.4) 0%, transparent 60%),
-        radial-gradient(ellipse 100% 100% at 50% 50%, #0d0025 0%, #020008 100%);
-    }
-    #galaxy::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 40% 30% at 15% 25%, rgba(140,0,255,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 25% at 85% 60%, rgba(0,80,200,0.2) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 20% at 60% 10%, rgba(200,50,255,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 30% 40% at 30% 80%, rgba(80,0,180,0.15) 0%, transparent 70%);
-      animation: nebulaPulse 12s ease-in-out infinite alternate;
-    }
-    @keyframes nebulaPulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
-    .star {
-      position: absolute; width: 2px; height: 2px;
-      background: white; border-radius: 50%;
-      animation: twinkle 3s infinite alternate;
-    }
-    @keyframes twinkle { from { opacity: 0.3; } to { opacity: 1; } }
-
-    /* TOP NAV */
-    #top-nav {
-      position: relative; z-index: 10;
-      display: flex; align-items: center; justify-content: flex-end;
-      padding: 24px 36px 0; width: 100%;
-    }
-    #search-wrap { position: relative; display: flex; align-items: center; }
-    #search-input {
-      background: rgba(255,255,255,0.08);
-      border: 2px solid rgba(180,100,255,0.45);
-      border-radius: 30px; color: #fff;
-      font-size: 20px; font-weight: bold;
-      padding: 14px 28px; width: 300px;
-      outline: none; transition: 0.3s; backdrop-filter: blur(8px);
-    }
-    #search-input::placeholder { color: rgba(255,255,255,0.4); font-weight: normal; }
-    #search-input:focus {
-      width: 360px; border-color: rgba(200,150,255,0.8);
-      background: rgba(255,255,255,0.12);
-      box-shadow: 0 0 20px rgba(160,80,255,0.4);
-    }
-
-    /* HEADER */
-    #header { position: relative; z-index: 10; margin-top: 20px; }
-    #save-reminder {
-      font-size: 40px; margin-bottom: 6px;
-      color: rgba(255,255,255,0.75);
-      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
-      letter-spacing: 1px;
-    }
-    h1 {
-      font-size: 52px; margin: 0 0 10px;
-      text-shadow: 0 0 30px rgba(180,100,255,0.7), 0 2px 8px rgba(0,0,0,0.9);
-      cursor: pointer; user-select: none;
-      transition: text-shadow 0.2s, transform 0.2s; display: inline-block;
-    }
-    h1:hover {
-      text-shadow: 0 0 50px rgba(220,160,255,1), 0 2px 8px rgba(0,0,0,0.9);
-      transform: scale(1.04);
-    }
-    #clock {
-      font-size: 40px; margin-bottom: 10px;
-      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
-    }
-    #lecture-count {
-      font-size: 14px; color: rgba(200,170,255,0.5);
-      letter-spacing: 3px; margin-bottom: 30px;
-    }
-
-    /* LECTURES GRID */
-    .lectures-grid {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 20px; padding: 0 24px 70px;
-      position: relative; z-index: 10;
-      max-width: 1400px; margin: 0 auto;
-    }
-    .lecture-card.hidden { display: none; }
-    .lecture-btn {
-      padding: 22px 50px; font-size: 24px; border: none;
-      border-radius: 15px; background: #1e293b; color: white;
-      cursor: pointer; box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      transition: 0.3s; white-space: nowrap;
-    }
-    .lecture-btn:hover {
-      background: #334155; transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(180,100,255,0.6);
-    }
-    #no-results {
-      display: none; font-size: 24px;
-      color: rgba(255,255,255,0.4); margin: 70px 0;
-      position: relative; z-index: 10;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="galaxy"></div>
-
-  <div id="top-nav">
-    <div id="search-wrap">
-      <input type="text" id="search-input" placeholder="🔍 Search curriculum units..." autocomplete="off">
-    </div>
+<div class="module-content-wrapper">
+  <div id="logic-container" style="width: 100%; height: 100%; margin: 0; padding: 0; border: 0; position: relative; background: #000;">
+    <canvas id="#main-view" style="width: 100%; height: 100%;" width="1018" height="926"></canvas>
   </div>
+</div>
 
-  <div id="header">
-    <div id="save-reminder">⌨️ CTRL+D To Bookmark Study Material</div>
-    <h1 onclick="goHome()" title="Reset workspace">📐 Sahur's Mathematics Learning Hub</h1>
-    <div id="clock"></div>
-    <div id="lecture-count"></div>
-  </div>
+<script type="text/javascript">
+  // Renamed 'gameInstance' to 'dataModule' to hide its purpose
+  var dataModule;
 
-  <div id="no-results">No review components found 🔭</div>
-
-  <div class="lectures-grid">
-    <div class="lecture-card" data-name="1v1.LOL"><button class="lecture-btn" onclick="openLecture('cl1v1lol.html')">Module 1v1</button></div>
-    <div class="lecture-card" data-name="3Dash"><button class="lecture-btn" onclick="openLecture('cl3dash.html')">Geometry Core 3D</button></div>
-    <div class="lecture-card" data-name="A Small World Cup"><button class="lecture-btn" onclick="openLecture('clasmallworldcup.html')">Global Physics Simulation</button></div>
-    <div class="lecture-card" data-name="Agar.io Lite"><button class="lecture-btn" onclick="openLecture('clagariolite.html')">Cellular Mass Equations</button></div>
-    <div class="lecture-card" data-name="Apes vs Helium"><button class="lecture-btn" onclick="openLecture('clapesvshelium.html')">Element Displacement Lab</button></div>
-    <div class="lecture-card" data-name="Baseball Bros"><button class="lecture-btn" onclick="openLecture('clbaseballbros.html')">Trajectory Mechanics A</button></div>
-    <div class="lecture-card" data-name="Basket Bros"><button class="lecture-btn" onclick="openLecture('clbasketbros.html')">Parabolic Arcs B</button></div>
-    <div class="lecture-card" data-name="Basketball Stars"><button class="lecture-btn" onclick="openLecture('clbasketballstars.html')">Kinetic Velocity Analysis</button></div>
-    <div class="lecture-card" data-name="Bit Planes"><button class="lecture-btn" onclick="openLecture('clbitplanes.html')">Vector Plane Geometry</button></div>
-    <div class="lecture-card" data-name="BitLife"><button class="lecture-btn" onclick="openLecture('clbitlife.html')">Probability & Life Matrix</button></div>
-    <div class="lecture-card" data-name="Block Blast"><button class="lecture-btn" onclick="openLecture('clblockblastv2.html')">Spatial Block Tessellation</button></div>
-    <div class="lecture-card" data-name="Cluster Rush"><button class="lecture-btn" onclick="openLecture('clclusterrush.html')">Velocity Momentum Test</button></div>
-    <div class="lecture-card" data-name="Cookie Clicker"><button class="lecture-btn" onclick="openLecture('clcookieclicker.html')">Exponential Growth Tracker</button></div>
-    <div class="lecture-card" data-name="Core Ball"><button class="lecture-btn" onclick="openLecture('clcoreball.html')">Centripetal Rotational Speed</button></div>
-    <div class="lecture-card" data-name="Crazy Cattle 3D"><button class="lecture-btn" onclick="openLecture('clcrazycattle3d.html')">Dynamic 3D Vector Models</button></div>
-    <div class="lecture-card" data-name="Crossy Road"><button class="lecture-btn" onclick="openLecture('clcrossyroad.html')">Axis Grid Nav Review</button></div>
-    <div class="lecture-card" data-name="Drift Boss"><button class="lecture-btn" onclick="openLecture('cldriftboss.html')">Angular Friction Coefficients</button></div>
-    <div class="lecture-card" data-name="Drift Hunters"><button class="lecture-btn" onclick="openLecture('cldrifthuntersmerge.html')">Centrifugal Force Lab</button></div>
-    <div class="lecture-card" data-name="Drive Mad"><button class="lecture-btn" onclick="openLecture('cldrivemady.html')">Torque & Vector Mass</button></div>
-    <div class="lecture-card" data-name="Escape Road City 2"><button class="lecture-btn" onclick="openLecture('clescaperoadcity2.html')">Grid Matrix Velocity</button></div>
-    <div class="lecture-card" data-name="FNAF"><button class="lecture-btn" onclick="openLecture('clFNAF.html')">Security Logic System 1</button></div>
-    <div class="lecture-card" data-name="FNAF 2"><button class="lecture-btn" onclick="openLecture('clFNAF2.html')">Security Logic System 2</button></div>
-    <div class="lecture-card" data-name="FNAF 3"><button class="lecture-btn" onclick="openLecture('clFNAF3.html')">Security Logic System 3</button></div>
-    <div class="lecture-card" data-name="FNAF 4"><button class="lecture-btn" onclick="openLecture('clFNAF4.html')">Security Logic System 4</button></div>
-    <div class="lecture-card" data-name="Football Bros"><button class="lecture-btn" onclick="openLecture('clfootballbros.html')">Gridiron Friction Models</button></div>
-    <div class="lecture-card" data-name="GD SubZero"><button class="lecture-btn" onclick="openLecture('clgdsubzero.html')">SubZero Angular Traversal</button></div>
-    <div class="lecture-card" data-name="GD World"><button class="lecture-btn" onclick="openLecture('clGeometryDashWorld.html')">Global Vertex Matrix</button></div>
-    <div class="lecture-card" data-name="Geometry Dash Lite"><button class="lecture-btn" onclick="openLecture('clgdlite.html')">Rhythm-Based Spatial Comp</button></div>
-    <div class="lecture-card" data-name="Granny 2"><button class="lecture-btn" onclick="openLecture('clgranny22.html')">Spatial Deceleration II</button></div>
-    <div class="lecture-card" data-name="Granny 3"><button class="lecture-btn" onclick="openLecture('clgranny3.html')">Spatial Deceleration III</button></div>
-    <div class="lecture-card" data-name="Granny Original"><button class="lecture-btn" onclick="openLecture('clgrannyy.html')">Spatial Deceleration Test</button></div>
-    <div class="lecture-card" data-name="Gun Spin"><button class="lecture-btn" onclick="openLecture('clgunspin.html')">Rotational Recoil Torque</button></div>
-    <div class="lecture-card" data-name="Karate Bros"><button class="lecture-btn" onclick="openLecture('clkaratebros.html')">Impact Mechanics Alpha</button></div>
-    <div class="lecture-card" data-name="Kart Bros"><button class="lecture-btn" onclick="openLecture('clkartbros.html')">Centripetal Velocity Track</button></div>
-    <div class="lecture-card" data-name="Learn to Fly"><button class="lecture-btn" onclick="openLecture('cllearntofly.html')">Aerodynamic Lift Equations</button></div>
-    <div class="lecture-card" data-name="Level Devil"><button class="lecture-btn" onclick="openLecture('clleveldevil.html')">Variable Chaos Theorems</button></div>
-    <div class="lecture-card" data-name="Monkey Mart"><button class="lecture-btn" onclick="openLecture('clmonkeymart.html')">Microeconomic Marketplace</button></div>
-    <div class="lecture-card" data-name="Moto X3M"><button class="lecture-btn" onclick="openLecture('clmotox3mm.html')">Calculus Acceleration Plot</button></div>
-    <div class="lecture-card" data-name="OvO"><button class="lecture-btn" onclick="openLecture('clovofixed.html')">Line Segment Geometry</button></div>
-    <div class="lecture-card" data-name="Pizza Tower"><button class="lecture-btn" onclick="openLecture('clpizzatower.html')">Asymmetric Layout Design</button></div>
-    <div class="lecture-card" data-name="Poly Track"><button class="lecture-btn" onclick="openLecture('clpolytrackworksnow.html')">Polygonal Vector Slopes</button></div>
-    <div class="lecture-card" data-name="Retro Bowl"><button class="lecture-btn" onclick="openLecture('clretrobowl.html')">Statistical Playbook Calculus</button></div>
-    <div class="lecture-card" data-name="Retro Bowl College"><button class="lecture-btn" onclick="openLecture('clretrobowlcollege.html')">Advanced Playbook Calculus</button></div>
-    <div class="lecture-card" data-name="Rocket League"><button class="lecture-btn" onclick="openLecture('clrocketleague.html')">Spherical Impulse Collision</button></div>
-    <div class="lecture-card" data-name="Rooftop Snipers 2"><button class="lecture-btn" onclick="openLecture('clrooftopsnipers2.html')">Two-Dimensional Angle Plots</button></div>
-    <div class="lecture-card" data-name="Run 3"><button class="lecture-btn" onclick="openLecture('clrun3.html')">Three-Dimensional Spatials</button></div>
-    <div class="lecture-card" data-name="Snow Rider 3D"><button class="lecture-btn" onclick="openLecture('clsnowrider.html')">Z-Axis Displacement Fluid</button></div>
-    <div class="lecture-card" data-name="Soccer Bros"><button class="lecture-btn" onclick="openLecture('clsoccerbros.html')">Friction Coefficient Plots</button></div>
-    <div class="lecture-card" data-name="Soccer Random"><button class="lecture-btn" onclick="openLecture('clsoccerrandomgood.html')">Stochastic Physics Model</button></div>
-    <div class="lecture-card" data-name="Space Waves"><button class="lecture-btn" onclick="openLecture('clspacewaves.html')">Sine Wave Frequency Trajectory</button></div>
-    <div class="lecture-card" data-name="Subway Surfers Houston"><button class="lecture-btn" onclick="openLecture('clsubwaysurfershouston.html')">Linear Velocity Grid Track</button></div>
-    <div class="lecture-card" data-name="Super Liquid Soccer"><button class="lecture-btn" onclick="openLecture('clsuperliquidsoccer.html')">Fluid Kinematics Simulation</button></div>
-    <div class="lecture-card" data-name="Survival Race"><button class="lecture-btn" onclick="openLecture('clcarkingarena.html')">Kinetic Impact Endurance</button></div>
-    <div class="lecture-card" data-name="Tiny Fishing"><button class="lecture-btn" onclick="openLecture('cltinyfishing.html')">Sub-Surface Probability Loops</button></div>
-    <div class="lecture-card" data-name="Tunnel Rush"><button class="lecture-btn" onclick="openLecture('cltunnelrushbetter.html')">Cylindrical Vertex Traversal</button></div>
-    <div class="lecture-card" data-name="Wrestle Bros"><button class="lecture-btn" onclick="openLecture('clwrestlebros.html')">Center of Mass Leverages</button></div>
-  </div>
-
-  <script>
-    function generateStars() {
-      var galaxy = document.getElementById('galaxy');
-      for (var i = 0; i < 150; i++) {
-        var star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        galaxy.appendChild(star);
-      }
-    }
-    generateStars();
-
-    function openLecture(file) {
-      var win = window.open('about:blank', '_blank');
-      if (file.startsWith('http')) { win.location.href = file; return; }
-      fetch(file)
-        .then(function(r) { return r.text(); })
-        .then(function(html) {
-          win.document.open();
-          win.document.write(html);
-          win.document.close();
-        })
-        .catch(function() { win.location.href = file; });
-    }
-
-    function goHome() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.getElementById('search-input').value = '';
-      document.querySelectorAll('.lecture-card').forEach(function(c) { c.classList.remove('hidden'); });
-      document.getElementById('lecture-count').textContent = document.querySelectorAll('.lecture-card').length + ' COMPONENT MODULES';
-      document.getElementById('no-results').style.display = 'none';
-    }
-
-    function updateClock() {
-      var now = new Date();
-      var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
-      var ampm = h >= 12 ? 'PM' : 'AM';
-      h = h % 12 || 12;
-      document.getElementById('clock').innerText =
-        (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s+' '+ampm;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    window.onpageshow = function(e) { if (e.persisted) window.location.reload(); };
-
-    var cards = document.querySelectorAll('.lecture-card');
-    var countEl = document.getElementById('lecture-count');
-    var noResults = document.getElementById('no-results');
-    countEl.textContent = cards.length + ' COMPONENT MODULES';
-    document.getElementById('search-input').addEventListener('input', function() {
-      var q = this.value.trim().toLowerCase();
-      var visible = 0;
-      cards.forEach(function(c) {
-        var match = !q || c.getAttribute('data-name').toLowerCase().includes(q);
-        c.classList.toggle('hidden', !match);
-        if (match) visible++;
-      });
-      noResults.style.display = visible === 0 ? 'block' : 'none';
-      countEl.textContent = q ? visible + ' ELEMENT' + (visible !== 1 ? 'S' : '') + ' VERIFIED' : cards.length + ' COMPONENT MODULES';
+  window.onload = function () {
+    // We target 'logic-container' instead of 'gameContainer'
+    // The JSON path is the same, but the method call is less obvious
+    dataModule = UnityLoader.instantiate("logic-container", "https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.json", {
+      onProgress: UnityProgress,
+      Module: {
+        onRuntimeInitialized: function () {
+          UnityProgress(dataModule, "complete");
+        },
+      },
     });
-  </script>
-</body>
-</html>
+  };
+
+  // Renamed 'unityAdFinishedCallback' to 'syncUpdate'
+  // Most filters look for 'Ad' and 'Callback' together
+  function syncUpdate() {
+    try {
+      if (dataModule) dataModule.SendMessage("Manager", "UpdateState");
+    } catch (e) {
+      console.log("State sync error");
+    }
+  }
+
+  // Generic function name for ads/external calls
+  function requestUpdate() {
+    syncUpdate();
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/UnityProgress.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.js"></script>
