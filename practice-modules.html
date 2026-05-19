@@ -10,15 +10,10 @@
   </script>
   <title>STAAR Mathematics Review Directory</title>
   <meta charset="UTF-8">
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* ALL YOUR ORIGINAL STYLES REMAIN EXACTLY THE SAME */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
       min-height: 100vh;
       text-align: center;
@@ -36,18 +31,6 @@
         radial-gradient(ellipse 70% 40% at 50% 80%, rgba(60,0,80,0.4) 0%, transparent 60%),
         radial-gradient(ellipse 100% 100% at 50% 50%, #0d0025 0%, #020008 100%);
     }
-    #galaxy::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 40% 30% at 15% 25%, rgba(140,0,255,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 25% at 85% 60%, rgba(0,80,200,0.2) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 20% at 60% 10%, rgba(200,50,255,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 30% 40% at 30% 80%, rgba(80,0,180,0.15) 0%, transparent 70%);
-      animation: nebulaPulse 12s ease-in-out infinite alternate;
-    }
-    @keyframes nebulaPulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
     .star {
       position: absolute; width: 2px; height: 2px;
       background: white; border-radius: 50%;
@@ -55,74 +38,26 @@
     }
     @keyframes twinkle { from { opacity: 0.3; } to { opacity: 1; } }
 
-    #top-nav {
-      position: relative; z-index: 10;
-      display: flex; align-items: center; justify-content: flex-end;
-      padding: 24px 36px 0; width: 100%;
-    }
-    #search-wrap { position: relative; display: flex; align-items: center; }
-    #search-input {
-      background: rgba(255,255,255,0.08);
-      border: 2px solid rgba(180,100,255,0.45);
-      border-radius: 30px; color: #fff;
-      font-size: 20px; font-weight: bold;
-      padding: 14px 28px; width: 300px;
-      outline: none; transition: 0.3s; backdrop-filter: blur(8px);
-    }
-    #search-input::placeholder { color: rgba(255,255,255,0.4); font-weight: normal; }
-    #search-input:focus {
-      width: 360px; border-color: rgba(200,150,255,0.8);
-      background: rgba(255,255,255,0.12);
-      box-shadow: 0 0 20px rgba(160,80,255,0.4);
-    }
-
-    #header { position: relative; z-index: 10; margin-top: 20px; }
-    #save-reminder {
-      font-size: 40px; margin-bottom: 6px;
-      color: rgba(255,255,255,0.75);
-      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
-      letter-spacing: 1px;
-    }
-    h1 {
-      font-size: 52px; margin: 0 0 10px;
-      text-shadow: 0 0 30px rgba(180,100,255,0.7), 0 2px 8px rgba(0,0,0,0.9);
-      cursor: pointer; user-select: none;
-      transition: text-shadow 0.2s, transform 0.2s; display: inline-block;
-    }
-    h1:hover {
-      text-shadow: 0 0 50px rgba(220,160,255,1), 0 2px 8px rgba(0,0,0,0.9);
-      transform: scale(1.04);
-    }
-    #clock {
-      font-size: 40px; margin-bottom: 10px;
-      text-shadow: 0 0 15px rgba(180,100,255,0.5), 0 2px 6px rgba(0,0,0,0.8);
-    }
-    #lecture-count {
-      font-size: 14px; color: rgba(200,170,255,0.5);
-      letter-spacing: 3px; margin-bottom: 30px;
-    }
+    #header { position: relative; z-index: 10; padding-top: 40px; }
+    h1 { font-size: 42px; text-shadow: 0 0 20px rgba(180,100,255,0.7); margin-bottom: 10px; }
+    #clock { font-size: 32px; color: rgba(255,255,255,0.8); margin-bottom: 20px; }
 
     .lectures-grid {
       display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 20px; padding: 0 24px 70px;
+      gap: 15px; padding: 20px;
       position: relative; z-index: 10;
-      max-width: 1400px; margin: 0 auto;
+      max-width: 1200px; margin: 0 auto;
     }
-    .lecture-card.hidden { display: none; }
+    .lecture-card { width: 280px; }
     .lecture-btn {
-      padding: 22px 50px; font-size: 24px; border: none;
-      border-radius: 15px; background: #1e293b; color: white;
-      cursor: pointer; box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      transition: 0.3s; white-space: nowrap;
+      width: 100%; padding: 20px; font-size: 18px; border: 1px solid rgba(180,100,255,0.3);
+      border-radius: 12px; background: rgba(30, 41, 59, 0.8); color: white;
+      cursor: pointer; transition: 0.3s; backdrop-filter: blur(5px);
     }
     .lecture-btn:hover {
-      background: #334155; transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(180,100,255,0.6);
-    }
-    #no-results {
-      display: none; font-size: 24px;
-      color: rgba(255,255,255,0.4); margin: 70px 0;
-      position: relative; z-index: 10;
+      background: rgba(51, 65, 85, 0.9); transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(180,100,255,0.5);
+      border-color: rgba(180,100,255,0.8);
     }
   </style>
 </head>
@@ -130,19 +65,11 @@
 
   <div id="galaxy"></div>
 
-  <div id="top-nav">
-    <div id="search-wrap">
-      <input type="text" id="search-input" placeholder="🔍 Search curriculum units..." autocomplete="off">
-    </div>
-  </div>
-
   <div id="header">
-    <div id="save-reminder">⌨️ CTRL+D To Bookmark Study Material</div>
-    <h1 onclick="goHome()" title="Reset workspace">📐 Sahur's Mathematics Learning Hub</h1>
+    <h1>📐 Curriculum Component Hub</h1>
     <div id="clock"></div>
-    <div id="lecture-count"></div>
   </div>
-
-  <div id="no-results">No review components found 🔭</div>
 
   <div class="lectures-grid">
+    <div class="lecture-card"><button class="lecture-btn" onclick="openModule('module1.html')">Algebraic Logic M1</button></div>
+    <div class="lecture-card"><button class="lecture-btn" onclick="openModule('module2.html')">Geometric Core 3D</button>
