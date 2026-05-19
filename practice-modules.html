@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mathematics Resource Directory</title>
+  <style>
+    body { margin: 0; background: #0a0015; color: white; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+    #galaxy { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, #1a0033 0%, #020008 100%); }
+    .star { position: absolute; background: white; border-radius: 50%; opacity: 0.6; }
+    .content { position: relative; z-index: 10; padding: 60px 20px; text-align: center; }
+    h1 { font-size: 48px; text-shadow: 0 0 20px #8b5cf6; margin-bottom: 40px; }
+    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .module-card { 
+      background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; padding: 30px; 
+      border-radius: 15px; width: 280px; cursor: pointer; transition: 0.3s; 
+    }
+    .module-card:hover { transform: translateY(-10px); border-color: #7c3aed; box-shadow: 0 0 30px rgba(124, 58, 237, 0.3); }
+    .module-card h3 { margin: 0; font-size: 20px; }
+  </style>
+</head>
+<body>
+  <div id="galaxy"></div>
+  <div class="content">
+    <h1>📐 Mathematics Review Hub</h1>
+    <div class="grid">
+      <div class="module-card" onclick="openStealth('module1.html')">
+        <h3>Algebraic Systems</h3>
+      </div>
+      <div class="module-card" onclick="openStealth('module2.html')">
+        <h3>Geometric Proofs</h3>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Star generator
+    const galaxy = document.getElementById('galaxy');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = star.style.height = Math.random() * 2 + 'px';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      galaxy.appendChild(star);
+    }
+
+    // Stealth Loader to bypass extensions
+    function openStealth(file) {
+      const win = window.open('about:blank', '_blank');
+      fetch(file)
+        .then(r => r.text())
+        .then(html => {
+          win.document.open();
+          win.document.write(html);
+          win.document.close();
+        })
+        .catch(() => { win.location.href = file; });
+    }
+  </script>
+</body>
+</html>
